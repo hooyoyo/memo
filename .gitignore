@@ -1,0 +1,14 @@
+#.gitignore
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# MacOSX:
+.DS_Store
+
+# IDE:
+.idea
+
+*.unknown
