@@ -57,7 +57,7 @@ li {
 }
 
 .nav-bar div {
-    padding: 12px 0;
+    padding: 12px 15px;
 }
 
 .nav-bar .btn:hover {
@@ -69,9 +69,8 @@ li {
     margin: 0;
 }
 
-.nav-bar i{
+.nav-bar i {
     font-size: 24px;
-    margin: 0 15px;
     vertical-align: middle;
 }
 
@@ -83,6 +82,7 @@ li {
 
 .nav-bar .title {
     width: 100%;
+    text-align: center;
 }
 
 .nav-bar .home {
