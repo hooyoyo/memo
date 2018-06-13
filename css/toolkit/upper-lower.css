@@ -170,11 +170,31 @@ li {
     background-color: #319978;
 }
 
+.select-option span.static {
+    padding: 0 5px 2px 5px;
+    margin: 0 5px 0 0;
+    border-radius: 2px;
+    cursor: default;
+}
+
+.select-option span.static:hover, .select-option span.static.active {
+    background-color: inherit;
+    color: inherit;
+}
+
+.select-option span.static:active {
+    background-color: inherit;
+}
+
 .select-option i {
     font-size: 18px;
     font-weight: 400;
     margin-left: 0;
     margin-right: 5px;
+}
+
+.shift-type .cell-option {
+    margin-left: 10px;
 }
 
 .cell-bulletin {
@@ -205,6 +225,22 @@ li {
 
 .cell-option .iconfont.active::before {
     content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.iconfont.icon-unselect-radio::before {
+    content: "\ea33";
+    color: #319978;
+}
+
+.cell-option b.iconfont.icon-unselect-radio:hover::before {
+    content: "\ea30";
+    color: #44b78b;
+}
+
+.cell-option b.iconfont.icon-unselect-radio.active::before,
+.cell-option b.iconfont.icon-unselect-radio:active::before {
+    content: "\ea30";
     color: #319978;
 }
 
@@ -271,11 +307,11 @@ li {
     cursor: pointer;
 }
 
-#btnConfirm:hover {
+#btnShift:hover {
     background-color: #39aa86;
 }
 
-#btnConfirm:active {
+#btnShift:active {
     background-color: #319978;
 }
 
@@ -285,6 +321,7 @@ li {
     border: 1px solid #ddd;
     height: 30px;
     width: 148px;
+    line-height: 30px;
     color: #aeaeae;
     font-weight: normal;
 }

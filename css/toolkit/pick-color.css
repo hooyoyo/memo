@@ -275,11 +275,11 @@ li {
     cursor: pointer;
 }
 
-#aConfirm:hover {
+#aConvert:hover {
     background-color: #39aa86;
 }
 
-#aConfirm:active {
+#aConvert:active {
     background-color: #319978;
 }
 

@@ -27,27 +27,39 @@
 <div class="main-body">
     <!-- 工具区 -->
     <div class="zone-form">
-        <div class="field-title select-option">
-            <div><b class="cell-bulletin">栏目</b></div>
+        <div class="field-title select-option text-type">
+            <div><b class="cell-bulletin">类型</b></div>
             <div class="cell-option">
-                <b class="iconfont icon-select-empty"></b><span>选项</span>
-                <b class="iconfont icon-select-empty"></b><span>选项</span>
-                <b class="iconfont icon-select-empty active"></b><span>选项</span>
+                <span class="char active">字母</span>
+                <span class="sql">SQL</span>
+                <span class="num">数额</span>
             </div>
         </div>
 
         <div class="field-content">
-            <textarea id="taSource" maxlength="1000" placeholder="内容描述..."></textarea>
+            <textarea id="taSource" maxlength="1000" placeholder="待切换的文本内容..."></textarea>
+        </div>
+
+        <div class="field-title select-option shift-type">
+            <div><b class="cell-bulletin">结果</b></div>
+            <div class="cell-option">
+                <b class="upper iconfont icon-unselect-radio active"></b><span class="static">大写</span>
+                <b class="lower iconfont icon-unselect-radio"></b><span class="static">小写</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taResult" maxlength="1000" placeholder="切换后的..."></textarea>
         </div>
     </div>
 
     <div class="zone-tip">
-        <p><b>注：</b><span>“粗体”</span>普通字体<span>相关</span>说明</p>
+        <p><b>注：</b>只对<span>标准</span>SQL语句的关键字进行处理。</p>
     </div>
 
     <div class="zone-act">
-        <div id="btnConfirm" class="div-btn">确认</div>
-        <div id="btnCancel" class="div-btn">取消</div>
+        <div id="btnShift" class="div-btn">切换</div>
+        <div id="btnCancel" class="div-btn">清空</div>
     </div>
 
     <div class="zone-empty">

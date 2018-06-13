@@ -1,4 +1,5 @@
 $(function() {
+    _dropoffUrlParam_();
     $('body').show();
 
     var cellOptB = $('.cell-option b');

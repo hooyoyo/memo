@@ -492,6 +492,7 @@ input.sub-option {
     border: 1px solid #ddd;
     height: 30px;
     width: 148px;
+    line-height: 30px;
     color: #aeaeae;
     font-weight: normal;
 }

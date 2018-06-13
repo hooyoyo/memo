@@ -1,4 +1,5 @@
 $(function() {
+    _dropoffUrlParam_();
     $('body').show();
 
     var codeTypeSpan = $('.code-type span');
