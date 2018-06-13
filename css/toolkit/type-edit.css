@@ -51,6 +51,7 @@ li {
 .nav-bar {
     background-color: #44b78b;
     color: #f0f0f0;
+    line-height: 22px;
     display: -webkit-flex; /* Safari */
     display: flex;
 }

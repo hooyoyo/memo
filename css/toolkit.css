@@ -10,12 +10,6 @@ body {
     color: #393939;
 }
 
-body {
-    background: #f4f4f4;
-    color: #393939;
-    line-height: 22px;
-}
-
 ul {
     -webkit-padding: 0;
     -webkit-margin: 0;
@@ -48,6 +42,7 @@ li {
 .nav-bar {
     background-color: #44b78b;
     color: #f0f0f0;
+    line-height: 22px;
     display: -webkit-flex; /* Safari */
     display: flex;
 }
