@@ -344,7 +344,7 @@ input.sub-option {
     border: 8px solid transparent;
     border-top: 8px solid #999;
     width: 0;
-    height: 0px;
+    height: 0;
 }
 
 .ext-widget-button.up-arrow {
@@ -352,7 +352,7 @@ input.sub-option {
     border: 8px solid transparent;
     border-bottom: 8px solid #999;
     width: 0;
-    height: 0px;
+    height: 0;
 }
 
 #file .ext-widget-list {
@@ -373,6 +373,10 @@ input.sub-option {
     cursor: pointer;
 }
 
+.ext-widget-list > li:hover {
+    background-color: #f0f0f0;
+}
+
 #file .resize-origprop {
     margin-bottom: 0;
 }
@@ -384,10 +388,6 @@ input.sub-option {
     line-height: 20px;
     text-align: right;
     cursor: pointer;
-}
-
-.ext-widget-list > li:hover {
-    background-color: #f0f0f0;
 }
 
 .option-desc {

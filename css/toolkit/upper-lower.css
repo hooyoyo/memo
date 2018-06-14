@@ -248,6 +248,67 @@ li {
 
 }
 
+.btn-select-list {
+    position: relative;
+}
+
+.btn-select {
+    position: relative;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.btn-select input {
+    height: 24px;
+    width: 100px;
+    padding: 3px 5px;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+}
+
+.ext-widget-button.down-arrow {
+    position: absolute;
+    right: 4px;
+    margin: 8px 0 0 0;
+    border: 8px solid transparent;
+    border-top: 8px solid #999;
+    width: 0;
+    height: 0;
+}
+
+.ext-widget-button.up-arrow {
+    position: absolute;
+    right: 4px;
+    margin: 0 0 8px 0;
+    border: 8px solid transparent;
+    border-bottom: 8px solid #999;
+    width: 0;
+    height: 0;
+}
+
+.ext-widget-list {
+    position: absolute;
+    background-color: #fff;
+    font-size: 15px;
+    top: 24px;
+    right: 0;
+    z-index: 2;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px #ddd;
+}
+
+.ext-widget-list > li {
+    width: 98px;
+    margin: 3px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ext-widget-list > li:hover {
+    background-color: #f0f0f0;
+}
+
 .result-list li {
     padding: 5px 0;
     display: -webkit-flex; /* Safari */
