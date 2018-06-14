@@ -248,6 +248,10 @@ li {
 
 }
 
+.sql-type, .num-type {
+    margin-top: -1px;
+}
+
 .btn-select-list {
     position: relative;
 }
