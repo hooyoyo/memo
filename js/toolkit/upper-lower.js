@@ -51,13 +51,20 @@ $(function() {
         thisInput.attr('select', $(this).prop('class'));
     });
 
+    var taSource = $('#taSource');
+    var taResult = $('#taResult');
+
+    var btnClear = $('#btnClear');
+    btnClear.click(function () {
+        taSource.val('');
+        taResult.val('');
+    });
+
     var btnShift = $('#btnShift');
     btnShift.click(function () {
         var textType = textTypeSpan.siblings('.active').prop('class').split(/\s+/)[0];
         var shiftType = shiftTypeB.siblings('.active').prop('class').split(/\s+/)[0];
-        var taSource = $('#taSource');
-        var taResult = $('#taResult');
-        var taSrcVal = $('#taSource').val();
+        var taSrcVal = taSource.val();
         var taRstVal;
 
         if (textType == 'char') {
@@ -131,7 +138,8 @@ function num2money(n) {
     if (p >= 0) n = n.substring(0, p) + n.substr(p + 1, 5);
     unit = unit.substr(unit.length - n.length);
     for (var i = 0; i < n.length; i++) str += '零壹贰叁肆伍陆柒捌玖'.charAt(n.charAt(i)) + unit.charAt(i);
-    return str.replace(/零(仟|佰|拾)/g, '零').replace(/(零)+/g, '零').replace(/零(万|亿|元)/g, '$1').replace(/(亿)万|壹(拾)/g, '$1$2').replace(/^元零?|零角|零分|零厘|零豪|零丝/g, '').replace(/元$/g, '元整');
+    str = str.replace(/零(仟|佰|拾)/g, '零').replace(/(零)+/g, '零').replace(/零(万|亿|元)/g, '$1').replace(/(亿)万|壹(拾)/g, '$1$2').replace(/^元零?|零角|零分|零厘|零豪|零丝/g, '').replace(/元$/g, '元整');
+    return str;
 }
 
 function money2num(n) {
@@ -140,5 +148,7 @@ function money2num(n) {
     n = n.replace(/(^拾)/g, '壹$1');
     n = n.replace(/(.角)/g, '.$1');
     n = n.replace(/[兆亿万仟佰拾元角分厘豪丝整]/g, '');
-    return n.replace(/零/g, '0').replace(/壹/g, '1').replace(/贰/g, '2').replace(/叁/g, '3').replace(/肆/g, '4').replace(/伍/g, '5').replace(/陆/g, '6').replace(/柒/g, '7').replace(/捌/g, '8').replace(/玖/g, '9');
+    var str = n.replace(/零/g, '0').replace(/壹/g, '1').replace(/贰/g, '2').replace(/叁/g, '3').replace(/肆/g, '4').replace(/伍/g, '5').replace(/陆/g, '6').replace(/柒/g, '7').replace(/捌/g, '8').replace(/玖/g, '9');
+    str = (/^(0|[1-9]\d*)(\.\d+)?$/.test(str)) ? str : '无效金额';
+    return str;
 }

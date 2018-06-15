@@ -2,6 +2,17 @@ $(function() {
     _dropoffUrlParam_();
     $('body').show();
 
+    var loadTypeSpan = $('.load-type span');
+    loadTypeSpan.click(function () {
+        loadTypeSpan.removeClass('active');
+        $(this).addClass('active');
+
+        $('.resource-file').hide();
+        var loadType = loadTypeSpan.siblings('.active').prop('class').split(/\s+/)[0];
+        if (loadType == 'local') $('.local-file').show();
+        else if (loadType == 'online') $('.online-file').show();
+    });
+
     var iMarkConfig = $("#iMarkConfig");
     iMarkConfig.click(function () {
         $(".extend-panel").toggle();

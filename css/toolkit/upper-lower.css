@@ -380,7 +380,7 @@ li {
     background-color: #319978;
 }
 
-#btnCancel {
+#btnClear {
     margin-right: 0;
     background-color: #f0f0f0;
     border: 1px solid #ddd;
@@ -391,12 +391,12 @@ li {
     font-weight: normal;
 }
 
-#btnCancel:hover {
+#btnClear:hover {
     background-color: #ececec;
     color: #969696;
 }
 
-#btnCancel:active {
+#btnClear:active {
     background-color: #e8e8e8;
 }
 

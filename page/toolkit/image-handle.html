@@ -27,8 +27,19 @@
 <div class="main-body">
     <!-- 工具区 -->
     <div class="zone-form">
-        <div class="field-title select-option operate-type">
+        <div class="field-title select-option load-type">
             <div><b class="cell-bulletin">图像</b></div>
+            <div class="cell-option">
+                <span class="local active">本地上传</span>
+                <span class="online">网络链接</span>
+            </div>
+        </div>
+
+        <div class="field-content resource-file online-file" style="display: none;">
+            <div style="position: relative"><input id="inpUrl" type="text" maxlength="2000" placeholder="网络图片的链接地址..."/></div>
+        </div>
+
+        <div class="field-title resource-file local-file">
             <div id="selFile">
                 <input id="inpCover" type="text" placeholder="选择文件" readonly />
                 <input id="inpFile" type="file" accept="image/*" />

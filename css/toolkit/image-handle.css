@@ -181,7 +181,7 @@ li {
 }
 
 .cell-bulletin {
-    line-height: 28px;
+    line-height: 24px;
     color:#393939;
     margin-right: 15px;
 }
@@ -214,6 +214,15 @@ li {
 .cell-option .iconfont.active::before {
     content: "\ea2f";
     color: #319978;
+}
+
+.online-file {
+    margin-bottom: 10px;
+}
+
+.local-file {
+    padding-top: 6px;
+    padding-bottom: 16px;
 }
 
 #selFile {
@@ -254,7 +263,7 @@ li {
     padding: 0 15px;
 }
 
-#inpMark {
+#inpUrl, #inpMark {
     border: 1px solid #d9d9d9;
 }
 
