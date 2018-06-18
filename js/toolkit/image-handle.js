@@ -9,20 +9,37 @@ $(function() {
 
         $('.resource-file').hide();
         var loadType = loadTypeSpan.siblings('.active').prop('class').split(/\s+/)[0];
-        if (loadType == 'local') $('.local-file').show();
-        else if (loadType == 'online') $('.online-file').show();
+        if (loadType == 'local') {
+            inpUrl.val('');
+            $('.local-file').show();
+        } else if (loadType == 'online') {
+            inpFile.val('');
+            inpFileName.val('');
+            $('.online-file').show();
+        }
     });
 
-    var iMarkConfig = $("#iMarkConfig");
-    iMarkConfig.click(function () {
-        $(".extend-panel").toggle();
+    var inpUrl = $('#inpUrl');
+    inpUrl.change(function () {
+        var imgUrl = inpUrl.val().trim();
+        thumbnail.attr('src', imgUrl);
+
+        genDataUrl(imgUrl, null, function (dataurl) {
+            thumbnail.prop('src', dataurl);
+        });
     });
-    var closeMarkConfig = $("#closeMarkConfig");
+
+    var extendPanel = $(".extend-panel");
+    var iMarkConfig = $('#iMarkConfig');
+    iMarkConfig.click(function () {
+        extendPanel.filter('.ext-mark-config').toggle();
+    });
+    var closeMarkConfig = $('#closeMarkConfig');
     closeMarkConfig.click(function () {
         var markSize = inpMarkSize.val(inpMarkSize.attr('markSize'));
         var markPosition = inpMarkPosition.val(inpMarkPosition.attr('markPosition'));
         var markColor = inpMarkColor.val(inpMarkColor.attr('markColor'));
-        $(".extend-panel").toggle();
+        extendPanel.filter('.ext-mark-config').toggle();
     });
     var inpMarkSize = $('#inpMarkSize');
     var inpMarkPosition = $('#inpMarkPosition');
@@ -45,7 +62,7 @@ $(function() {
         if (!_isEmpty_(markSize)) inpMarkSize.attr('markSize', markSize);
         if (!_isEmpty_(markPosition)) inpMarkPosition.attr('markPosition', markPosition);
         if (!_isEmpty_(markColor)) inpMarkColor.attr('markColor', markColor);
-        $(".extend-panel").toggle();
+        extendPanel.filter('.ext-mark-config').toggle();
     });
 
     var storeType = $('#storeType');
@@ -112,6 +129,9 @@ $(function() {
         }
     });
 
+    var inpResizeQuality = $('#resizeQuality');
+    var inpResizeRatio = $('#resizeRatio');
+
     var inpResizeWidth = $('#resizeWidth');
     inpResizeWidth.keyup(function () {
         var value = $(this).val().trim();
@@ -169,8 +189,8 @@ $(function() {
         }
 
         var reader = new FileReader();
-        var inner = $("#extCanvas")[0];
-        var outer = $(".extend-view")[0];
+        var inner = $('#extCanvas')[0];
+        var outer = $('.extend-view')[0];
         reader.onload = function (e) {
             var src = e.target.result;
             drawPicture(src, inner, outer);
@@ -178,7 +198,7 @@ $(function() {
         reader.readAsDataURL(file);
     });
 
-    var thumbnail = $("#thumbnail");
+    var thumbnail = $('#thumbnail');
     thumbnail.click(function () {
         var data_url = $(this).prop('src');
         if (_isEmpty_(data_url)) return;
@@ -188,15 +208,66 @@ $(function() {
     extend_view.click(function () {
         $(".extend-view").toggle();
     });
+
+    var btnReset = $('#btnReset');
+    btnReset.click(function () {
+        inpFile.val('');
+        inpFileName.val('');
+        inpFileWidth.val('');
+        inpFileHeight.val('');
+        inpUrl.val('');
+        thumbnail.removeAttr('src');
+
+        inpDataUrl.val('');
+        $('#extCanvas').empty();
+
+        $('#inpMark').val('');
+        $('#inpMarkSize').val('');
+        $('#inpMarkPosition').val('');
+        $('#inpMarkColor').val('');
+
+        storeType.val('');
+        resizeType.val('');
+        inpResizeQuality.val('');
+        inpResizeRatio.val('');
+        inpResizeWidth.val('');
+        inpResizeHeight.val('');
+        checkPrigProp.removeClass('active');
+    });
+
+    var inpDataUrl = $('#inpDataUrl');
+    var btnDataurl = $('.btn-dataurl');
+    btnDataurl.click(function () {
+        inpDataUrl.val(thumbnail.prop('src'));
+        extendPanel.filter('.ext-data-url').toggle();
+    });
+    var closeDataUrl = $('#closeDataUrl');
+    closeDataUrl.click(function () {
+        inpDataUrl.val('');
+        extendPanel.filter('.ext-data-url').toggle();
+    });
     
     var btnDownload = $('.btn-download');
     btnDownload.click(function () {
-        var imgSrc = $('#thumbnail').prop('src');
+        var imgSrc = thumbnail.prop('src');
         var download = $('.zone-download').find('a');
-        var srcFile = inpFileName.val(), srcName = srcFile.split('.')[0], srcType = srcFile.split('.')[1];
+        var loadType = loadTypeSpan.siblings('.active').prop('class').split(/\s+/)[0];
         var tgType = $('#storeType').attr('select');
+        var srcName, srcType, fileName;
+        if (loadType == 'local') {
+            var srcFile = inpFileName.val();
+            var srcFileArray = srcFile.split('.');
+            srcName = srcFileArray[0];
+            srcType = srcFileArray[1];
+        } else if (loadType == 'online') {
+            var srcUrl = inpUrl.val().trim();
+            var srcUrlArray = srcUrl.split(/[.\/]/);
+            srcName = srcUrlArray[srcUrlArray.length - 2];
+            srcType = srcUrlArray[srcUrlArray.length - 1];
+        }
+
         tgType = (_isEmpty_(tgType)) ? srcType : tgType;
-        var fileName = srcName + (new Date()).getTime() + '.' + tgType;
+        fileName = srcName + (new Date()).getTime() + '.' + tgType;
 
         download.prop('href', imgSrc);
         download.prop('download', fileName);
@@ -204,23 +275,16 @@ $(function() {
     
     var btnHandle = $('#btnHandle');
     btnHandle.click(function () {
-        var file = $('#inpFile')[0].files[0];
-        if (file == null) {
-            _tipDialog_.popForm('alert', '提示', '请先选择文件');
-            return;
-        }
-        if (!file.type.match(/image.*/)) {
-            _tipDialog_.popForm('alert', '提示', '不支持的图片类型: ' + file.type);
-            return;
-        }
+        var loadType = loadTypeSpan.siblings('.active').prop('class').split(/\s+/)[0];
+        var inner = $('#extCanvas')[0];
+        var outer = $(".extend-view")[0];
 
-        _loadingStart_();
         var selStoreType = storeType.attr('select');
         var selResizeType = resizeType.attr('select');
-        var resizeQuality = parseFloat($('#resizeQuality').val());
-        var resizeRatio = parseFloat($('#resizeRatio').val());
-        var resizeWidth = parseInt($('#resizeWidth').val());
-        var resizeHeight = parseInt($('#resizeHeight').val());
+        var resizeQuality = parseFloat(inpResizeQuality.val());
+        var resizeRatio = parseFloat(inpResizeRatio.val());
+        var resizeWidth = parseInt(inpResizeWidth.val());
+        var resizeHeight = parseInt(inpResizeHeight.val());
 
         var errMsg = '';
         if (selResizeType == 'quality' && !_isEmpty_(resizeQuality) && (!_regExp_.isFloatNumber(resizeQuality) || resizeQuality > 1 || resizeQuality < 0)) errMsg += '参数“质量”错误！有效取值范围：[0-1]。<br>';
@@ -249,17 +313,68 @@ $(function() {
         if (!_isEmpty_(markColor)) option.markColor = markColor;
         if (!_isEmpty_(markText)) option.markText = markText;
 
-        var reader = new FileReader();
-        var inner = $("#extCanvas")[0];
-        var outer = $(".extend-view")[0];
-        reader.onload = function (e) {
-            var src = e.target.result;
-            drawPicture(src, inner, outer, option);
-        };
-        reader.readAsDataURL(file);
-        setTimeout('_loadingEnd_()', 255);
+        if (loadType == 'local') {
+            var file = inpFile[0].files[0];
+            if (file == null) {
+                _tipDialog_.popForm('alert', '提示', '请先选择文件');
+                return;
+            }
+            if (!file.type.match(/image.*/)) {
+                _tipDialog_.popForm('alert', '提示', '不支持的图片类型: ' + file.type);
+                return;
+            }
+
+            _loadingStart_();
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var src = e.target.result;
+                drawPicture(src, inner, outer, option);
+            };
+            reader.readAsDataURL(file);
+            setTimeout('_loadingEnd_()', 255);
+        } else if (loadType == 'online') {
+            var imgUrl = inpUrl.val().trim();
+            if (_isEmpty_(imgUrl)) {
+                _tipDialog_.popForm('alert', '提示', '请先录入网络图片链接地址');
+                return;
+            }
+
+            _loadingStart_();
+            var srcDataUrl = thumbnail.prop('src');
+            drawPicture(srcDataUrl, inner, outer, option);
+            setTimeout('_loadingEnd_()', 255);
+        }
     });
 });
+
+function genDataUrl(url, format, callback) {
+    var img = new Image(),
+        fmt = 'image/png',
+        dataurl = '';
+    if (format) fmt = format;
+    img.setAttribute('crossOrigin', 'Anonymous');
+    img.onload = function(){
+        var cvs = document.createElement('canvas'),
+            width = img.width,
+            height = img.height;
+        cvs.width = width;
+        cvs.height = height;
+        cvs.getContext('2d').drawImage(img, 0, 0, width, height);
+        dataurl = cvs.toDataURL(format);
+
+        $('#fileWidth').val(width);
+        $('#fileHeight').val(height);
+
+        callback ? callback(dataurl) : null;
+    };
+    /*
+    img.onerror = function(){
+        var timeStamp = (new Date()).getTime();
+        genDataUrl(url + '?' + timeStamp);
+    };
+    */
+    img.src = url;
+}
 
 function drawPicture(src, innerCanvas, outerDiv, option) {
     var MAX_HEIGHT = null;
@@ -328,15 +443,16 @@ function drawPicture(src, innerCanvas, outerDiv, option) {
             ctx.fillText(markText, markPositionX, markPositionY);
         }
 
+        var thumbnail = $('#thumbnail');
         if (_isEmpty_(storeType)) {
-            $("#thumbnail").attr('src', cvs.toDataURL('image/' + srcType));
+            thumbnail.attr('src', cvs.toDataURL('image/' + srcType));
         } else {
-            if (resizeType == 'quality' && !_isEmpty_(resizeQuality)) $("#thumbnail").attr('src', cvs.toDataURL('image/' + storeType, resizeQuality));
-            else $("#thumbnail").attr('src', cvs.toDataURL('image/' + storeType, 1));
+            if (resizeType == 'quality' && !_isEmpty_(resizeQuality)) thumbnail.attr('src', cvs.toDataURL('image/' + storeType, resizeQuality));
+            else thumbnail.attr('src', cvs.toDataURL('image/' + storeType, 1));
         }
 
-        //$("#thumbnail").attr('src', image.src);
-        //var thumbnailCvs = $("#thumbnail")[0];
+        //thumbnail.attr('src', image.src);
+        //var thumbnailCvs = thumbnail[0];
         //var thumbnailCtx = thumbnailCvs.getContext("2d");
         //thumbnailCtx.clearRect(0, 0, thumbnailCvs.width, thumbnailCvs.height);
         //thumbnailCtx.drawImage(image, 0, 0, thumbnailCvs.width, thumbnailCvs.height);

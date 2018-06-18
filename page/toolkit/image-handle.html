@@ -46,6 +46,8 @@
             </div>
             <div>
                 <input id="fileName" type="text" placeholder="尚未选择任何文件" readonly />
+            </div>
+            <div>
                 <input id="fileWidth" type="hidden" />
                 <input id="fileHeight" type="hidden" />
             </div>
@@ -77,16 +79,17 @@
                         <li class="pixel">像素</li>
                     </ul>
                 </li>
-                <li class="resize resize-quality" style="display: none"><span class="option-title">清晰度</span><input id="resizeQuality" class="sub-option" type="text" maxlength="8" placeholder="0.5"/></li>
-                <li class="resize resize-ratio" style="display: none"><span class="option-title">比例</span><input id="resizeRatio" class="sub-option" type="text" maxlength="8" placeholder="0.5"/></li>
-                <li class="resize resize-width" style="display: none"><span class="option-title">宽</span><input id="resizeWidth" class="sub-option" type="text" maxlength="8" placeholder="1280"/></li>
-                <li class="resize resize-height" style="display: none"><span class="option-title">高</span><input id="resizeHeight" class="sub-option" type="text" maxlength="8" placeholder="720"/></li>
+                <li class="resize resize-quality" style="display: none"><span class="option-title">清晰度</span><input id="resizeQuality" class="sub-option" type="text" maxlength="8" placeholder="0-1"/></li>
+                <li class="resize resize-ratio" style="display: none"><span class="option-title">比例</span><input id="resizeRatio" class="sub-option" type="text" maxlength="8" placeholder="0-1000"/></li>
+                <li class="resize resize-width" style="display: none"><span class="option-title">宽</span><input id="resizeWidth" class="sub-option" type="text" maxlength="8" placeholder="0-9999"/></li>
+                <li class="resize resize-height" style="display: none"><span class="option-title">高</span><input id="resizeHeight" class="sub-option" type="text" maxlength="8" placeholder="0-9999"/></li>
                 <li class="resize resize-origprop" style="display: none"><b class="iconfont icon-select-empty check-prigprop"></b><span class="option-desc">维持原宽高比</span></li>
             </ul>
         </div>
 
         <div class="zone-download">
             <span class="option-title">下载</span><a class="a-rsrc" href="" download=""><i class="iconfont icon-download btn-download"></i></a>
+            <span class="option-title" style="margin-left: 6px">取编码</span><i class="iconfont icon-codec btn-dataurl" style="font-weight: bold"></i>
         </div>
     </div>
 
@@ -96,13 +99,13 @@
 
     <div class="zone-act">
         <div id="btnHandle" class="div-btn">加工</div>
-        <div id="btnCancel" class="div-btn">重置</div>
+        <div id="btnReset" class="div-btn">重置</div>
     </div>
 
     <div class="zone-empty">
     </div>
 </div>
-<div class="extend-panel">
+<div class="extend-panel ext-mark-config">
     <div id="extMarkConfig">
         <div class="extend-title config-title">
             <p><span>水印字体配置</span><i id="closeMarkConfig" class="iconfont icon-cross"></i></p>
@@ -126,6 +129,16 @@
             <input id="inpMarkColor" type="text" maxlength="30" placeholder="rgba(255,255,255,0.5)">
         </div>
         <div id="confirmMarkConfig"><span>OK</span></div>
+    </div>
+</div>
+<div class="extend-panel ext-data-url">
+    <div id="extDataUrl">
+        <div class="extend-title config-title">
+            <p><span>图像编码数据</span><i id="closeDataUrl" class="iconfont icon-cross"></i></p>
+        </div>
+        <div class="extend-content">
+            <textarea id="inpDataUrl" maxlength="999999999" placeholder="图片的Base64编码结果..."></textarea>
+        </div>
     </div>
 </div>
 <footer class="main-footer">
