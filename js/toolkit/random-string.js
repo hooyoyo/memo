@@ -5,8 +5,11 @@ $(function() {
     var cellOptB = $('.cell-option b');
     cellOptB.click(function () {
         if ($(this).hasClass('void')) return;
-        if ($(this).hasClass('active')) $(this).removeClass('active');
+        if ($(this).hasClass('active')) $(this).removeClass('active').addClass('hold');
         else $(this).addClass('active');
+    });
+    cellOptB.mouseleave(function () {
+        $(this).removeClass('hold');
     });
 
     var spClear = $('#spClear');

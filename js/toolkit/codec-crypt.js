@@ -16,8 +16,11 @@ $(function() {
 
     var checkSpChar = $('.check-sp-char');
     checkSpChar.click(function () {
-        if (checkSpChar.hasClass('active')) checkSpChar.removeClass('active');
-        else checkSpChar.addClass('active');
+        if ($(this).hasClass('active')) $(this).removeClass('active').addClass('hold');
+        else $(this).addClass('active');
+    });
+    checkSpChar.mouseleave(function () {
+        $(this).removeClass('hold');
     });
 
     $('.main-shell').click(function () {

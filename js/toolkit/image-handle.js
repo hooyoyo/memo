@@ -163,8 +163,11 @@ $(function() {
 
     var checkPrigProp = $('.check-prigprop');
     checkPrigProp.click(function () {
-        if (checkPrigProp.hasClass('active')) checkPrigProp.removeClass('active');
-        else checkPrigProp.addClass('active');
+        if ($(this).hasClass('active')) $(this).removeClass('active').addClass('hold');
+        else $(this).addClass('active');
+    });
+    checkPrigProp.mouseleave(function () {
+        $(this).removeClass('hold');
     });
 
     var inpFile = $('#inpFile');

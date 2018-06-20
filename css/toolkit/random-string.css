@@ -179,13 +179,23 @@ li {
     cursor: pointer;
 }
 
-.cell-option b:hover::before {
+.cell-option b:not(.hold):not(.active):hover::before {
     content: "\ea2f";
     color: #44b78b;
 }
 
-.cell-option b:active::before {
+.cell-option b:not(.hold):not(.active):active::before {
     content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.hold:not(.active):active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.active:active::before {
+    content: "\ea2e";
     color: #319978;
 }
 
@@ -198,9 +208,9 @@ li {
     color: #319978;
 }
 
-.cell-option b.icon-select-radio:hover::before,
-.cell-option b.icon-select-radio:active::before,
 .cell-option b.iconfont.icon-select-radio,
+.cell-option b.iconfont.icon-select-radio:hover::before,
+.cell-option b.iconfont.icon-select-radio:active::before,
 .cell-option b.iconfont.icon-select-radio.active::before {
     content: "\ea30";
     color: #319978;

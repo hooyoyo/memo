@@ -188,13 +188,23 @@ li {
     cursor: pointer;
 }
 
-.cell-option b:hover::before {
+.cell-option b:not(.hold):not(.active):hover::before {
     content: "\ea2f";
     color: #44b78b;
 }
 
-.cell-option b:active::before {
+.cell-option b:not(.hold):not(.active):active::before {
     content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.hold:not(.active):active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.active:active::before {
+    content: "\ea2e";
     color: #319978;
 }
 
@@ -305,6 +315,11 @@ input.sub-option {
     height: 24px;
 }
 
+#bar li.empty-li.last-line {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 #bar .cell-option {
     padding-left: 26px;
 }
@@ -312,10 +327,16 @@ input.sub-option {
 #bar .cell-option b {
     margin-right: 8px;
     line-height: 24px;
+    font-size: 14px;
 }
 
 #bar .cell-option span.option-title {
     width: auto;
+}
+
+#bar .download {
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 #bar .download span {
@@ -388,7 +409,7 @@ input.sub-option {
 }
 
 .zone-act {
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 .sp-btn {
@@ -428,7 +449,7 @@ input.sub-option {
 }
 
 .zone-empty {
-    padding: 25px 15px;
+    padding: 15px;
     border-bottom: 1px solid #ddd;
 }
 

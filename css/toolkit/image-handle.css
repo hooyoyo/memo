@@ -199,15 +199,27 @@ li {
     cursor: pointer;
 }
 
-.check-prigprop:hover::before,
-.cell-option b:hover::before {
+.check-prigprop:not(.hold):not(.active):hover::before,
+.cell-option b:not(.hold):not(.active):hover::before {
     content: "\ea2f";
     color: #44b78b;
 }
 
-.check-prigprop:active::before,
-.cell-option b:active::before {
+.check-prigprop:not(.hold):not(.active):active::before,
+.cell-option b:not(.hold):not(.active):active::before {
     content: "\ea2f";
+    color: #319978;
+}
+
+.check-prigprop.hold:not(.active):active::before,
+.cell-option b.hold:not(.active):active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.check-prigprop.active:active::before,
+.cell-option b.active:active::before {
+    content: "\ea2e";
     color: #319978;
 }
 
@@ -397,8 +409,8 @@ input.sub-option {
 }
 
 .check-prigprop {
-    width: 42px;
-    padding-right: 8px;
+    margin-left: 28px;
+    margin-right: 8px;
     font-size: 14px;
     line-height: 20px;
     text-align: right;

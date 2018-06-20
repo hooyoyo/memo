@@ -194,15 +194,27 @@ li {
     cursor: pointer;
 }
 
-.check-sp-char:hover::before,
-.cell-option b:hover::before {
+.check-sp-char:not(.hold):not(.active):hover::before,
+.cell-option b:not(.hold):not(.active):hover::before {
     content: "\ea2f";
     color: #44b78b;
 }
 
-.check-sp-char:active::before,
-.cell-option b:active::before {
+.check-sp-char:not(.hold):not(.active):active::before,
+.cell-option b:not(.hold):not(.active):active::before {
     content: "\ea2f";
+    color: #319978;
+}
+
+.check-sp-char.hold:not(.active):active::before,
+.cell-option b.hold:not(.active):active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.check-sp-char.active:active::before,
+.cell-option b.active:active::before {
+    content: "\ea2e";
     color: #319978;
 }
 
