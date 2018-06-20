@@ -10,5 +10,11 @@ Desktop.ini
 
 # IDE:
 .idea
+.settings
+
+# VCS
+.git
+.svn
+.cvs
 
 *.unknown
