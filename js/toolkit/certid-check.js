@@ -23,7 +23,8 @@ $(function() {
 
     var btnCheck = $('#btnCheck');
     btnCheck.click(function () {
-        var certID = taCertID.val();
+        var certID = taCertID.val().trim();
+        if (certID == '') return;
         var strict = $('.check-district').hasClass('active');
         var pass = checkCertID(certID, strict);
         if (pass) _tipDialog_.popForm('alert', '校验通过', '有效的身份证号码');
