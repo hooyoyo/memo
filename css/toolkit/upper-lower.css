@@ -110,7 +110,7 @@ li {
 
 .zone-form textarea {
     width: 100%;
-    height: 100px;
+    height: 150px;
     padding: 10px 15px;
     font-size: 15px;
     box-sizing: border-box;
@@ -411,7 +411,7 @@ li {
 }
 
 .zone-empty {
-    padding: 25px 15px;
+    padding: 15px;
     border-bottom: 1px solid #ddd;
 }
 

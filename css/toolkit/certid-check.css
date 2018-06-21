@@ -287,37 +287,39 @@ li {
     font-weight: 600;
     line-height: 32px;
     height: 32px;
-    width: 150px;
+    width: 96px;
     margin: 0;
-    margin-right: 30px;
+    margin-right: 20px;
     border-radius: 2px;
     cursor: pointer;
 }
 
-#btnConfirm:hover {
+#btnConfirm:hover,
+#btnGenerate:hover {
     background-color: #39aa86;
 }
 
-#btnConfirm:active {
+#btnConfirm:active,
+#btnGenerate:active {
     background-color: #319978;
 }
 
-#btnCancel {
+#btnClear {
     margin-right: 0;
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     height: 30px;
-    width: 148px;
+    width: 94px;
     color: #aeaeae;
     font-weight: normal;
 }
 
-#btnCancel:hover {
+#btnClear:hover {
     background-color: #ececec;
     color: #969696;
 }
 
-#btnCancel:active {
+#btnClear:active {
     background-color: #e8e8e8;
 }
 
