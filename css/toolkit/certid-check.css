@@ -294,12 +294,12 @@ li {
     cursor: pointer;
 }
 
-#btnConfirm:hover,
+#btnCheck:hover,
 #btnGenerate:hover {
     background-color: #39aa86;
 }
 
-#btnConfirm:active,
+#btnCheck:active,
 #btnGenerate:active {
     background-color: #319978;
 }
