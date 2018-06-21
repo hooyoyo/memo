@@ -7,10 +7,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/temp.css">
+    <link rel="stylesheet" href="../../css/toolkit/certid-check.css">
     <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
     <script src="../../js/base.js"></script>
-    <script src="../../js/temp.js"></script>
+    <script src="../../js/toolkit/certid-check.js"></script>
 </head>
 <body style="display: none">
 <div class="main-shell">
@@ -27,27 +27,31 @@
 <div class="main-body">
     <!-- 工具区 -->
     <div class="zone-form">
-        <div class="field-title select-option">
-            <div><b class="cell-bulletin">栏目</b></div>
+        <div class="field-title select-option certid-type">
+            <div><b class="cell-bulletin">类型</b></div>
             <div class="cell-option">
-                <b class="iconfont icon-select-empty"></b><span>选项</span>
-                <b class="iconfont icon-select-empty"></b><span>选项</span>
-                <b class="iconfont icon-select-empty active"></b><span>选项</span>
+                <span class="gen2nd active">二代18位</span>
+            </div>
+        </div>
+
+        <div class="field-title extend-option">
+            <div class="cell-option">
+                <b class="iconfont icon-select-empty check-district active"></b><span>判断行政区划</span>
             </div>
         </div>
 
         <div class="field-content">
-            <textarea id="taSource" maxlength="1000" placeholder="内容描述..."></textarea>
+            <textarea id="taSource" maxlength="1000" placeholder="身份证号码..."></textarea>
         </div>
     </div>
 
     <div class="zone-tip">
-        <p><b>注：</b><span>“粗体”</span>普通字体<span>相关</span>说明</p>
+        <p><b>注：</b><span>行政区划</span>来自民政部网站截止2018年4月的数据，详见http://www.mca.gov.cn/article/sj/xzqh。</p>
     </div>
 
     <div class="zone-act">
-        <div id="btnConfirm" class="div-btn">确认</div>
-        <div id="btnCancel" class="div-btn">取消</div>
+        <div id="btnCheck" class="div-btn">校验</div>
+        <div id="btnCancel" class="div-btn">清空</div>
     </div>
 
     <div class="zone-empty">

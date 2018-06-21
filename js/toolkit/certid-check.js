@@ -5,4 +5,10 @@ $(function() {
     }*/
     _dropoffUrlParam_();
     $('body').show();
+
+    var certidTypeSpan = $('.certid-type span');
+    certidTypeSpan.click(function () {
+        certidTypeSpan.removeClass('active');
+        $(this).addClass('active');
+    });
 });
