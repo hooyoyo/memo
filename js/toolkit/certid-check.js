@@ -21,6 +21,11 @@ $(function() {
         $(this).removeClass('hold');
     });
 
+    var btnClear = $('#btnClear');
+    btnClear.click(function () {
+        taCertID.val('');
+    });
+
     var btnCheck = $('#btnCheck');
     btnCheck.click(function () {
         var certID = taCertID.val().trim();
@@ -29,6 +34,32 @@ $(function() {
         var pass = checkCertID(certID, strict);
         if (pass) _tipDialog_.popForm('alert', '校验通过', '有效的身份证号码');
         else _tipDialog_.popForm('alert', '校验不通过', '无效的身份证号码');
+    });
+
+    var btnGenerate = $('#btnGenerate');
+    btnGenerate.click(function () {
+        var index = _rndNum_(5);
+        index = (index + 6 > dist_num.length) ? index - dist_num.length : index;
+        index = index - index % 7;
+        var district = dist_num.substr(index, 6);
+
+        var millisecond = _rndNum_(13);
+        var date = new Date(millisecond).pattern('yyyyMMdd');
+
+        var number = _rndNum_(3);
+        var main_part = district + date + number;
+
+        var arr = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+        var sum = 0;
+        for (var i=0; i<arr.length; i++) {
+            sum += parseInt(main_part.charAt(i)) * arr[i];
+        }
+        var c = sum % 11;
+        var char = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+        var code = char[c];
+
+        var certid = main_part + code;
+        taCertID.val(certid);
     });
 
     var taCertID = $('#taCertID');
@@ -50,14 +81,14 @@ function checkCertID(id, strict) {
     pass = checkDate(date);
     if (!pass) return false;
 
-    var arr = [7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2];
+    var arr = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
     var sum = 0;
-    for(var i=0; i<arr.length; i++) sum += parseInt(id.charAt(i)) * arr[i];
-    var c = sum%11;
+    for (var i=0; i<arr.length; i++) sum += parseInt(id.charAt(i)) * arr[i];
+    var c = sum % 11;
     var char = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
     var code = char[c];
     var last = id.charAt(17);
-    last = last=='x' ? 'X': last;
+    last = last == 'x' ? 'X': last;
     return last == code;
 }
 

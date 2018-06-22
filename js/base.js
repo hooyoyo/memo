@@ -196,6 +196,39 @@ function _isDate_(str)
 }
 // 日期处理工具：结束
 
+// 产生随机字符串（默认8位长度）
+function _rndStr_(len, opt) {
+    var length = (len) ? len : 8;
+    var chars = '', unique;
+    if (opt) {
+        (opt.upper) ? chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : null;
+        (opt.lower) ? chars += 'abcdefghijklmnopqrstuvwxyz' : null;
+        (opt.number) ? chars += '0123456789' : null;
+        (opt.symbol) ? chars += '`~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?' : null;
+        (opt.custom) ? chars += ('' + opt.custom).replace(/\s/g, '') : null;
+        (opt.unique) ? unique = opt.unique : null;
+    } else {
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?';
+    }
+    var str = '';
+    for (var j = 0; j < length; j++) {
+        if (chars.length < 1) break;
+        var index = Math.floor(Math.random() * chars.length);
+        str += chars[index];
+        if (unique) chars.splice(index, 1);
+    }
+    return str;
+}
+
+// 产生随机数（默认1~9位任意长）
+function _rndNum_(len) {
+    var power = ((len) ? len : Math.floor(Math.random() * 10)) - 1;
+    var size = Math.pow(10, power);
+    var num = Math.floor(Math.random() * size * 10);
+    (num < size) ? num += size : null;
+    return num;
+}
+
 // 判断是否为空（含空文本）
 function _isEmpty_(x)
 {

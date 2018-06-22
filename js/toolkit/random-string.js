@@ -20,10 +20,10 @@ $(function() {
     var spGenerate = $('#spGenerate');
     spGenerate.click(function () {
         var chars = '';
-        if (check('#upper')) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        if (check('#lower')) chars += "abcdefghijklmnopqrstuvwxyz";
-        if (check('#number')) chars += "0123456789";
-        if (check('#symbol')) chars += "`~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
+        if (check('#upper')) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if (check('#lower')) chars += 'abcdefghijklmnopqrstuvwxyz';
+        if (check('#number')) chars += '0123456789';
+        if (check('#symbol')) chars += '`~!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?';
         if (check('#custom')) chars += $('#meta').val().replace(/\s/g, '');
 
         var length = $('#length').val().trim();
@@ -34,13 +34,12 @@ $(function() {
 
         var strs = [];
         for (var i = 0; i < count; i++) {
-            var charray = chars.split('');
             var str = '';
             for (var j = 0; j < length; j++) {
-                if (charray.length < 1) break;
-                var index = Math.floor(Math.random() * charray.length);
-                str += charray[index];
-                if (unique) charray.splice(index, 1);
+                if (chars.length < 1) break;
+                var index = Math.floor(Math.random() * chars.length);
+                str += chars[index];
+                if (unique) chars.splice(index, 1);
             }
             strs.push(str);
         }
