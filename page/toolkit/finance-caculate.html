@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>校验身份证号码</title>
+    <title>理财计算</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
     <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/toolkit/certid-check.css">
+    <link rel="stylesheet" href="../../css/toolkit/finance-caculate.css">
     <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
     <script src="../../js/base.js"></script>
-    <script src="../../js/toolkit/certid-check.js"></script>
+    <script src="../../js/toolkit/finance-caculate.js"></script>
 </head>
 <body style="display: none">
 <div class="main-shell">
@@ -19,7 +19,7 @@
     <!--<div class="logo-title">LOGO TITLE</div>-->
     <div class="nav-bar">
         <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
-        <div class="title"><span>校验身份证号码</span></div>
+        <div class="title"><span>理财计算</span></div>
         <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
     </div>
 </header>
@@ -27,34 +27,42 @@
 <div class="main-body">
     <!-- 工具区 -->
     <div class="zone-form">
-        <div class="field-title select-option certid-type">
+        <div class="field-title select-option finance-type">
             <div><b class="cell-bulletin">类型</b></div>
-            <div class="cell-option">
-                <span class="gen2nd active">二代18位</span>
+            <div class="cell-option active">
+                <span class="active">滚动复利</span>
             </div>
         </div>
 
-        <div class="field-title extend-option">
-            <div class="cell-option">
-                <b class="iconfont icon-select-empty check-district active"></b><span>判断行政区划</span>
-                <b class="iconfont icon-select-empty check-multi-line"></b><span>校验多行</span>
-                <b class="iconfont icon-select-empty generate-multi-line"></b><span>生成数</span><input id="idCount" type="text" maxlength="3" placeholder="1" />
-            </div>
-        </div>
-
-        <div class="field-content">
-            <textarea id="taCertID" maxlength="999999999" cols="999999999" rows="999999999" placeholder="身份证号码..."></textarea>
+        <div id="caculator" class="field-content">
+            <table>
+                <tr>
+                    <td class="td-title">初始本金</td>
+                    <td><input id="principal" maxlength="16" placeholder="请录入金额..." /></td>
+                </tr>
+                <tr>
+                    <td class="td-title">每期追加</td>
+                    <td><input id="deposit" maxlength="16" placeholder="请录入金额..." /></td>
+                </tr>
+                <tr>
+                    <td class="td-title">复利率</td>
+                    <td><input id="interest" maxlength="16" placeholder="请录入比率..." /></td>
+                </tr>
+                <tr>
+                    <td class="td-title">存期</td>
+                    <td><input id="maturity" maxlength="16" placeholder="请录入期限..." /></td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <div class="zone-tip">
-        <p><b>注：</b><span>行政区划</span>来自民政部网站截止2018年4月的数据，详见http://www.mca.gov.cn/article/sj/xzqh。</p>
+        <p><b>注：</b><span>“粗体”</span>普通字体<span>相关</span>说明</p>
     </div>
 
     <div class="zone-act">
-        <div id="btnCheck" class="div-btn">校验</div>
-        <div id="btnGenerate" class="div-btn">生成</div>
-        <div id="btnClear" class="div-btn">清空</div>
+        <div id="btnCaculate" class="div-btn">计算</div>
+        <div id="btnReset" class="div-btn">重置</div>
     </div>
 
     <div class="zone-empty">

@@ -31,35 +31,58 @@ $(function() {
         var certID = taCertID.val().trim();
         if (certID == '') return;
         var strict = $('.check-district').hasClass('active');
-        var pass = checkCertID(certID, strict);
-        if (pass) _tipDialog_.popForm('alert', '校验通过', '有效的身份证号码');
-        else _tipDialog_.popForm('alert', '校验不通过', '无效的身份证号码');
+        var checkMultiLine = $('.check-multi-line').hasClass('active');
+        if (checkMultiLine) {
+            var IDs = certID.split('\n');
+            var errIDs = '';
+            IDs.forEach(function (id) {
+                id = id.trim();
+                var pass = checkCertID(id, strict);
+                if (!pass) errIDs += '<br>' + id;
+            });
+            if (_isEmpty_(errIDs)) _tipDialog_.popForm('alert', '校验通过', '有效的身份证号码');
+            else _tipDialog_.popForm('alert', '校验不通过', '无效的身份证号码' + errIDs);
+        } else {
+            var pass = checkCertID(certID, strict);
+            if (pass) _tipDialog_.popForm('alert', '校验通过', '有效的身份证号码');
+            else _tipDialog_.popForm('alert', '校验不通过', '无效的身份证号码');
+        }
     });
 
     var btnGenerate = $('#btnGenerate');
     btnGenerate.click(function () {
-        var index = _rndNum_(5);
-        index = (index + 6 > dist_num.length) ? index - dist_num.length : index;
-        index = index - index % 7;
-        var district = dist_num.substr(index, 6);
+        var generateMultiLine = $('.generate-multi-line').hasClass('active');
+        var count = generateMultiLine ? $('#idCount').val().trim() : 1;
+        count = count ? count : 1;
 
-        var millisecond = _rndNum_(13);
-        var date = new Date(millisecond).pattern('yyyyMMdd');
+        var IDs = '';
+        for (var n = 0; n < count; n++) {
+            var index = _rndNum_(5);
+            index = (index + 6 > dist_num.length) ? index - dist_num.length : index;
+            index = index - index % 7;
+            var district = dist_num.substr(index, 6);
 
-        var number = _rndNum_(3);
-        var main_part = district + date + number;
+            var millisecond = _rndNum_(13);
+            var date = new Date(millisecond).pattern('yyyyMMdd');
 
-        var arr = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
-        var sum = 0;
-        for (var i=0; i<arr.length; i++) {
-            sum += parseInt(main_part.charAt(i)) * arr[i];
+            var number = _rndNum_(3);
+            var main_part = district + date + number;
+
+            var arr = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum += parseInt(main_part.charAt(i)) * arr[i];
+            }
+            var c = sum % 11;
+            var char = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+            var code = char[c];
+
+            var ID = main_part + code;
+            IDs += ID + '\n';
         }
-        var c = sum % 11;
-        var char = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
-        var code = char[c];
+        IDs = IDs.replace(/(.*)(\n)$/g, '$1');
 
-        var certid = main_part + code;
-        taCertID.val(certid);
+        taCertID.val(IDs);
     });
 
     var taCertID = $('#taCertID');
@@ -83,7 +106,7 @@ function checkCertID(id, strict) {
 
     var arr = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
     var sum = 0;
-    for (var i=0; i<arr.length; i++) sum += parseInt(id.charAt(i)) * arr[i];
+    for (var i = 0; i < arr.length; i++) sum += parseInt(id.charAt(i)) * arr[i];
     var c = sum % 11;
     var char = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
     var code = char[c];

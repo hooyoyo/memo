@@ -198,7 +198,7 @@ function _isDate_(str)
 
 // 产生随机字符串（默认8位长度）
 function _rndStr_(len, opt) {
-    var length = (len) ? len : 8;
+    var length = len ? len : 8;
     var chars = '', unique;
     if (opt) {
         (opt.upper) ? chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : null;
@@ -222,7 +222,7 @@ function _rndStr_(len, opt) {
 
 // 产生随机数（默认1~9位任意长）
 function _rndNum_(len) {
-    var power = ((len) ? len : Math.floor(Math.random() * 10)) - 1;
+    var power = (len ? len : Math.floor(Math.random() * 10)) - 1;
     var size = Math.pow(10, power);
     var num = Math.floor(Math.random() * size * 10);
     (num < size) ? num += size : null;

@@ -53,7 +53,7 @@ $(function() {
         if (outType == 'native') {
             var codes = input.split('\\u');
             codes.shift();
-            for(var i=0; i<codes.length; i++) {
+            for(var i = 0; i < codes.length; i++) {
                 output += String.fromCharCode(parseInt(codes[i], 16).toString(10));
             }
         } else if (outType == 'gbk') {

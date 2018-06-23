@@ -233,6 +233,7 @@ input.sub-option {
     height: 24px;
     width: 100px;
     padding: 3px 5px;
+    font-size: 14px;
     text-align: center;
     border: 1px solid #d9d9d9;
 }
@@ -292,7 +293,7 @@ input.sub-option {
 }
 
 #bar td {
-    padding-right: 15px;
+    padding-right: 25px;
 }
 
 #bar.hidden {
@@ -325,7 +326,7 @@ input.sub-option {
 }
 
 #bar .cell-option b {
-    margin-right: 8px;
+    margin-right: 10px;
     line-height: 24px;
     font-size: 14px;
 }
