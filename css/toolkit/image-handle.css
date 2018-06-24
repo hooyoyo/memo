@@ -346,6 +346,10 @@ input.sub-option {
     right: 4px;
 }
 
+.btn-select {
+    position: relative;
+}
+
 .btn-select input {
     cursor: pointer;
 }
@@ -367,7 +371,7 @@ input.sub-option {
 }
 
 .ext-widget-button.down-arrow {
-    margin-top: 8px;
+    top: 8px;
     border: 8px solid transparent;
     border-top: 8px solid #999;
     width: 0;
@@ -375,7 +379,7 @@ input.sub-option {
 }
 
 .ext-widget-button.up-arrow {
-    margin-bottom: 8px;
+    bottom: 8px;
     border: 8px solid transparent;
     border-bottom: 8px solid #999;
     width: 0;

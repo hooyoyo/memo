@@ -216,31 +216,7 @@ li {
     color: #319978;
 }
 
-.field-content ul {
-    padding: 0 15px;
-}
-
-.result-list li {
-    padding: 5px 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
-}
-
-.result-list span {
-    margin-right: 15px;
-    font-size: 15px;
-}
-
-.result-list span.long {
-    margin-right: 24px;
-}
-
-.result-list .key {
-    width: 80px;
-    font-weight: 600;
-}
-
-.result-list .value {
+.field-content {
 }
 
 .zone-tip {

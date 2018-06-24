@@ -255,7 +255,6 @@ li {
 }
 
 .field-content {
-
 }
 
 .sql-type, .num-type {
@@ -321,29 +320,6 @@ li {
 
 .ext-widget-list > li:hover {
     background-color: #f0f0f0;
-}
-
-.result-list li {
-    padding: 5px 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
-}
-
-.result-list span {
-    margin-right: 15px;
-    font-size: 15px;
-}
-
-.result-list span.long {
-    margin-right: 24px;
-}
-
-.result-list .key {
-    width: 80px;
-    font-weight: 600;
-}
-
-.result-list .value {
 }
 
 .zone-tip {
