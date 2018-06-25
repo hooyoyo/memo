@@ -235,7 +235,8 @@ $(function() {
                 }
                 totalSum *= (1 + interestRate);
             }
-            totalSum += stageDeposit * Math.pow(rateStage, interestRatePowerDec);
+            var times = interestRatePowerDec / interestPowers * depositTimes;
+            totalSum += stageDeposit * times;
         } else if (rateStage < 1) {
             if (stageDepositMultiplicatorInt == 0) {
                 totalSum += principal * Math.pow((1 + interestRate), interestRatePowerInt);
