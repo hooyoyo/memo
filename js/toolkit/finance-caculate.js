@@ -55,173 +55,215 @@ $(function() {
         var interestRateType = $('#interestRateType').attr('select');
         interestRateType = interestRateType ? interestRateType : 'year';
         var maturity = Number($('#maturity').val().trim());
+        if (maturity == 0) {
+            $('#totalPrincipal').text('');
+            $('#totalInterest').text('');
+            $('#totalSum').text('');
+            $('#totalYieldRate').text('');
+            return;
+        }
         var maturityType = $('#maturityType').attr('select');
         maturityType = maturityType ? maturityType : 'year';
 
-        var stageDepositMultiplicator;
+        var stageDepositMultiplicator, depositTimes;
         if (stageDepositType == maturityType) {
-            stageDepositMultiplicator = maturity;
+            depositTimes = 1;
         } else if (stageDepositType == 'day' && maturityType == 'week') {
-            stageDepositMultiplicator = maturity * 7;
+            depositTimes = 7;
         } else if (stageDepositType == 'day' && maturityType == 'month') {
-            stageDepositMultiplicator = maturity * 30.5;
+            depositTimes = 30.5;
         } else if (stageDepositType == 'day' && maturityType == 'quarter') {
-            stageDepositMultiplicator = maturity * 30.5 * 3;
+            depositTimes = 91.25;
         } else if (stageDepositType == 'day' && maturityType == 'year') {
-            stageDepositMultiplicator = maturity * 365;
+            depositTimes = 365;
         } else if (stageDepositType == 'week' && maturityType == 'day') {
-            stageDepositMultiplicator = maturity / 7;
+            depositTimes = 1 / 7;
         } else if (stageDepositType == 'week' && maturityType == 'month') {
-            stageDepositMultiplicator = maturity * 4.33;
+            depositTimes = 4.33;
         } else if (stageDepositType == 'week' && maturityType == 'quarter') {
-            stageDepositMultiplicator = maturity * 4.33 * 3;
+            depositTimes = 13;
         } else if (stageDepositType == 'week' && maturityType == 'year') {
-            stageDepositMultiplicator = maturity * 52;
+            depositTimes = 52;
         } else if (stageDepositType == 'month' && maturityType == 'day') {
-            stageDepositMultiplicator = maturity / 30.5;
+            depositTimes = 1 / 30.5;
         } else if (stageDepositType == 'month' && maturityType == 'week') {
-            stageDepositMultiplicator = maturity / 4.33;
+            depositTimes = 1 / 4.33;
         } else if (stageDepositType == 'month' && maturityType == 'quarter') {
-            stageDepositMultiplicator = maturity * 3;
+            depositTimes = 3;
         } else if (stageDepositType == 'month' && maturityType == 'year') {
-            stageDepositMultiplicator = maturity * 12;
+            depositTimes = 12;
         } else if (stageDepositType == 'quarter' && maturityType == 'day') {
-            stageDepositMultiplicator = maturity / 30.5 / 3;
+            depositTimes = 1 / 91.25;
         } else if (stageDepositType == 'quarter' && maturityType == 'week') {
-            stageDepositMultiplicator = maturity / 4.33 / 3;
+            depositTimes = 1 / 13;
         } else if (stageDepositType == 'quarter' && maturityType == 'month') {
-            stageDepositMultiplicator = maturity / 3;
+            depositTimes = 1 / 3;
         } else if (stageDepositType == 'quarter' && maturityType == 'year') {
-            stageDepositMultiplicator = maturity * 4;
+            depositTimes = 4;
         } else if (stageDepositType == 'year' && maturityType == 'day') {
-            stageDepositMultiplicator = maturity / 365;
+            depositTimes = 1 / 365;
         } else if (stageDepositType == 'year' && maturityType == 'week') {
-            stageDepositMultiplicator = maturity / 52;
+            depositTimes = 1 / 52;
         } else if (stageDepositType == 'year' && maturityType == 'month') {
-            stageDepositMultiplicator = maturity / 12;
+            depositTimes = 1 / 12;
         } else if (stageDepositType == 'year' && maturityType == 'quarter') {
-            stageDepositMultiplicator = maturity / 4;
+            depositTimes = 1 / 4;
         }
+        stageDepositMultiplicator = maturity * depositTimes;
         var stageDepositMultiplicatorInt = parseInt(stageDepositMultiplicator), stageDepositMultiplicatorDec = stageDepositMultiplicator - stageDepositMultiplicatorInt;
+        if (stageDepositMultiplicatorDec > 0.99) { stageDepositMultiplicatorInt += 1; stageDepositMultiplicatorDec = 0; }
 
-        var interestRatePower;
+        var interestRatePower, interestPowers;
         if (interestRateType == maturityType) {
-            interestRatePower = maturity;
+            interestPowers = 1;
         } else if (interestRateType == 'day' && maturityType == 'week') {
-            interestRatePower = maturity * 7;
+            interestPowers = 7;
         } else if (interestRateType == 'day' && maturityType == 'month') {
-            interestRatePower = maturity * 30.5;
+            interestPowers = 30.5;
         } else if (interestRateType == 'day' && maturityType == 'quarter') {
-            interestRatePower = maturity * 30.5 * 3;
+            interestPowers = 91.25;
         } else if (interestRateType == 'day' && maturityType == 'year') {
-            interestRatePower = maturity * 365;
+            interestPowers = 365;
         } else if (interestRateType == 'week' && maturityType == 'day') {
-            interestRatePower = maturity / 7;
+            interestPowers = 1 / 7;
         } else if (interestRateType == 'week' && maturityType == 'month') {
-            interestRatePower = maturity * 4.33;
+            interestPowers = 4.33;
         } else if (interestRateType == 'week' && maturityType == 'quarter') {
-            interestRatePower = maturity * 4.33 * 3;
+            interestPowers = 13;
         } else if (interestRateType == 'week' && maturityType == 'year') {
-            interestRatePower = maturity * 52;
+            interestPowers = 52;
         } else if (interestRateType == 'month' && maturityType == 'day') {
-            interestRatePower = maturity / 30.5;
+            interestPowers = 1 / 30.5;
         } else if (interestRateType == 'month' && maturityType == 'week') {
-            interestRatePower = maturity / 4.33;
+            interestPowers = 1 / 4.33;
         } else if (interestRateType == 'month' && maturityType == 'quarter') {
-            interestRatePower = maturity * 3;
+            interestPowers = 3;
         } else if (interestRateType == 'month' && maturityType == 'year') {
-            interestRatePower = maturity * 12;
+            interestPowers = 12;
         } else if (interestRateType == 'quarter' && maturityType == 'day') {
-            interestRatePower = maturity / 30.5 / 3;
+            interestPowers = 1 / 91.25;
         } else if (interestRateType == 'quarter' && maturityType == 'week') {
-            interestRatePower = maturity / 4.33 / 3;
+            interestPowers = 1 / 13;
         } else if (interestRateType == 'quarter' && maturityType == 'month') {
-            interestRatePower = maturity / 3;
+            interestPowers = 1 / 3;
         } else if (interestRateType == 'quarter' && maturityType == 'year') {
-            interestRatePower = maturity * 4;
+            interestPowers = 4;
         } else if (interestRateType == 'year' && maturityType == 'day') {
-            interestRatePower = maturity / 365;
+            interestPowers = 1 / 365;
         } else if (interestRateType == 'year' && maturityType == 'week') {
-            interestRatePower = maturity / 52;
+            interestPowers = 1 / 52;
         } else if (interestRateType == 'year' && maturityType == 'month') {
-            interestRatePower = maturity / 12;
+            interestPowers = 1 / 12;
         } else if (interestRateType == 'year' && maturityType == 'quarter') {
-            interestRatePower = maturity / 4;
+            interestPowers = 1 / 4;
         }
+        interestRatePower = maturity * interestPowers;
         var interestRatePowerInt = parseInt(interestRatePower), interestRatePowerDec = interestRatePower - interestRatePowerInt;
 
-        var interestStage;
+        var rateStage;
         if (stageDepositType == interestRateType) {
-            interestStage = 1;
-        } else if (stageDepositType == 'day' && interestRateType == 'week') {
-            interestStage = 7;
-        } else if (stageDepositType == 'day' && interestRateType == 'month') {
-            interestStage = 30.5;
-        } else if (stageDepositType == 'day' && interestRateType == 'quarter') {
-            interestStage = 30.5 * 3;
-        } else if (stageDepositType == 'day' && interestRateType == 'year') {
-            interestStage = 365;
-        } else if (stageDepositType == 'week' && interestRateType == 'day') {
-            interestStage = 1 / 7;
-        } else if (stageDepositType == 'week' && interestRateType == 'month') {
-            interestStage = 4.33;
-        } else if (stageDepositType == 'week' && interestRateType == 'quarter') {
-            interestStage = 4.33 * 3;
-        } else if (stageDepositType == 'week' && interestRateType == 'year') {
-            interestStage = 52;
-        } else if (stageDepositType == 'month' && interestRateType == 'day') {
-            interestStage = 1 / 30.5;
-        } else if (stageDepositType == 'month' && interestRateType == 'week') {
-            interestStage = 1 / 4.33;
-        } else if (stageDepositType == 'month' && interestRateType == 'quarter') {
-            interestStage = 3;
-        } else if (stageDepositType == 'month' && interestRateType == 'year') {
-            interestStage = 12;
-        } else if (stageDepositType == 'quarter' && interestRateType == 'day') {
-            interestStage = 1 / 30.5 / 3;
-        } else if (stageDepositType == 'quarter' && interestRateType == 'week') {
-            interestStage = 1 / 4.33 / 3;
-        } else if (stageDepositType == 'quarter' && interestRateType == 'month') {
-            interestStage = 1 / 3;
-        } else if (stageDepositType == 'quarter' && interestRateType == 'year') {
-            interestStage = 4;
-        } else if (stageDepositType == 'year' && interestRateType == 'day') {
-            interestStage = 1 / 365;
-        } else if (stageDepositType == 'year' && interestRateType == 'week') {
-            interestStage = 1 / 52;
-        } else if (stageDepositType == 'year' && interestRateType == 'month') {
-            interestStage = 1 / 12;
-        } else if (stageDepositType == 'year' && interestRateType == 'quarter') {
-            interestStage = 1 / 4;
+            rateStage = 1;
+        } else if (interestRateType == 'week' && stageDepositType == 'day') {
+            rateStage = 7;
+        } else if (interestRateType == 'month' && stageDepositType == 'day') {
+            rateStage = 30.5;
+        } else if (interestRateType == 'quarter' && stageDepositType == 'day') {
+            rateStage = 91.25;
+        } else if (interestRateType == 'year' && stageDepositType == 'day') {
+            rateStage = 365;
+        } else if (interestRateType == 'day' && stageDepositType == 'week') {
+            rateStage = 1 / 7;
+        } else if (interestRateType == 'month' && stageDepositType == 'week') {
+            rateStage = 4.33;
+        } else if (interestRateType == 'quarter' && stageDepositType == 'week') {
+            rateStage = 13;
+        } else if (interestRateType == 'year' && stageDepositType == 'week') {
+            rateStage = 52;
+        } else if (interestRateType == 'day' && stageDepositType == 'month') {
+            rateStage = 1 / 30.5;
+        } else if (interestRateType == 'week' && stageDepositType == 'month') {
+            rateStage = 1 / 4.33;
+        } else if (interestRateType == 'quarter' && stageDepositType == 'month') {
+            rateStage = 3;
+        } else if (interestRateType == 'year' && stageDepositType == 'month') {
+            rateStage = 12;
+        } else if (interestRateType == 'day' && stageDepositType == 'quarter') {
+            rateStage = 1 / 91.25;
+        } else if (interestRateType == 'week' && stageDepositType == 'quarter') {
+            rateStage = 1 / 13;
+        } else if (interestRateType == 'month' && stageDepositType == 'quarter') {
+            rateStage = 1 / 3;
+        } else if (interestRateType == 'year' && stageDepositType == 'quarter') {
+            rateStage = 4;
+        } else if (interestRateType == 'day' && stageDepositType == 'year') {
+            rateStage = 1 / 365;
+        } else if (interestRateType == 'week' && stageDepositType == 'year') {
+            rateStage = 1 / 52;
+        } else if (interestRateType == 'month' && stageDepositType == 'year') {
+            rateStage = 1 / 12;
+        } else if (interestRateType == 'quarter' && stageDepositType == 'year') {
+            rateStage = 1 / 4;
         }
 
         var totalPrincipal = 0, totalInterest = 0, totalSum = 0, totalYieldRate = 0;
         //totalSum = principal * Math.pow((1 + x), n);
-        totalPrincipal = principal + stageDeposit * ((stageDepositMultiplicator > 1) ? (stageDepositMultiplicator - 1) : 0);
+        totalPrincipal = principal + stageDeposit * ((stageDepositMultiplicatorInt > 1) ? (stageDepositMultiplicatorInt - 1) : 0);
 
-        if (interestStage >= 1) {
+        if (interestRatePower < 1) {
+            $('#totalPrincipal').text(totalPrincipal);
+            $('#totalInterest').text('0');
+            $('#totalSum').text(totalPrincipal);
+            $('#totalYieldRate').text(0);
+            return;
+        }
+
+        if (rateStage == 1) {
             for (var i = 0; i < interestRatePowerInt; i++) {
-                i == 0 ? totalSum = principal : totalSum += stageDeposit * interestStage;
+                if (i == 0) {
+                    totalSum = principal;
+                } else {
+                    totalSum += stageDeposit;
+                }
                 totalSum *= (1 + interestRate);
             }
-            totalSum += stageDeposit * interestStage * interestRatePowerDec;
-            totalSum *= (1 + interestRate * interestRatePowerDec);
-        } else if (interestStage < 1) {
-            for (var i = 0; i < stageDepositMultiplicatorInt; i++) {
-                i == 0 ? totalSum = principal * Math.pow((1 + interestRate), interestStage) : totalSum *= Math.pow((1 + interestRate), interestStage);
-                totalSum += stageDeposit;
+        } else if (rateStage > 1) {
+            for (var i = 0; i < interestRatePowerInt; i++) {
+                if (i == 0) {
+                    totalSum += principal + stageDeposit * ((rateStage > 1) ? (rateStage - 1) : 0);
+                } else {
+                    totalSum += stageDeposit * rateStage;
+                }
+                totalSum *= (1 + interestRate);
             }
-            totalSum *= Math.pow((1 + interestRate), interestStage * stageDepositMultiplicatorDec);
-            totalSum += stageDeposit * interestStage * stageDepositMultiplicatorDec;
+            totalSum += stageDeposit * Math.pow(rateStage, interestRatePowerDec);
+        } else if (rateStage < 1) {
+            if (stageDepositMultiplicatorInt == 0) {
+                totalSum += principal * Math.pow((1 + interestRate), interestRatePowerInt);
+            } else {
+                var powers;
+                if (interestPowers >= 1) {
+                    powers = (depositTimes < 1) ? interestPowers * Math.round(1 / depositTimes) : interestPowers / depositTimes;
+                } else {
+                    powers = Math.round(1 / rateStage);
+                }
+                for (var i = 0; i < stageDepositMultiplicatorInt; i++) {
+                    if (i == 0) {
+                        totalSum = principal * Math.pow((1 + interestRate), powers);
+                    } else {
+                        totalSum += stageDeposit;
+                        totalSum *= Math.pow((1 + interestRate), powers);
+                    }
+                }
+            }
         }
 
         totalInterest = totalSum - totalPrincipal;
 
-        totalYieldRate = totalInterest / totalPrincipal;
+        totalYieldRate = ((totalInterest / totalPrincipal) * 100);
 
-        $('#totalPrincipal').text(totalPrincipal);
-        $('#totalInterest').text(totalInterest);
-        $('#totalSum').text(totalSum);
-        $('#totalYieldRate').text(totalYieldRate);
+        $('#totalPrincipal').text(totalPrincipal.toFixed(2));
+        $('#totalInterest').text(totalInterest.toFixed(2));
+        $('#totalSum').text(totalSum.toFixed(2));
+        $('#totalYieldRate').text(totalYieldRate.toFixed(2) + '%');
     });
 });

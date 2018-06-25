@@ -305,6 +305,12 @@ li {
     height: 0;
 }
 
+span.unit-field {
+    position: absolute;
+    left: 150px;
+    color: #999;
+}
+
 span.result-field {
     padding: 0;
 }
