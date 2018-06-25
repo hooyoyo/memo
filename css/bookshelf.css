@@ -82,11 +82,11 @@ li {
 .main-body {
 }
 
-.app-panel {
+.doc-panel {
     margin-top: 10px;
 }
 
-.app-title {
+.doc-title {
     background-color: #fff;
     font-size: 15px;
     font-weight: 600;
@@ -95,42 +95,60 @@ li {
     border-left: 3px solid #44b78b;
 }
 
-.app-menu {
+.doc-menu {
     background-color: #fff;
 }
 
-.app-menu > ul > li {
+.doc-menu > ul > li {
     border-top: 1px solid #e8e8e8;
     padding: 10px 0;
     display: -webkit-flex; /* Safari */
     display: flex;
 }
 
-.app-port {
+.doc-port {
     width: 25%;
     text-align: center;
 }
 
-.app-port .icon-font {
+.doc-port .icon-font {
     color: #66cc99;
     font-size: 20px;
     height: 36px;
 }
 
-.app-port .iconfont {
+.doc-port .iconfont {
     font-size: 28px;
     cursor: pointer;
 }
 
-.app-port .iconfont:hover {
+.doc-port .iconfont:hover {
     font-size: 32px;
 }
 
-.app-port .iconfont:active {
+.doc-port .iconfont:active {
     color: #319978;
 }
 
-.app-flash {
+.doc-flash {
+}
+
+.doc-panel {
+    margin-top: 10px;
+}
+
+.doc-title {
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #44b78b;
+}
+
+.doc-zone img {
+    width: 100%;
+    margin-top: 10px;
 }
 
 .zone-empty {
