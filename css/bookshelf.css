@@ -101,33 +101,43 @@ li {
 
 .doc-menu > ul > li {
     border-top: 1px solid #e8e8e8;
-    padding: 10px 0;
+    padding: 5px 0;
     display: -webkit-flex; /* Safari */
     display: flex;
 }
 
 .doc-port {
-    width: 25%;
+    width: 100%;
     text-align: center;
 }
 
 .doc-port .icon-font {
-    color: #66cc99;
+    position: relative;
     font-size: 20px;
-    height: 36px;
+    height: 26px;
+    text-align: left;
+    padding: 5px 0 5px 18px;
 }
 
 .doc-port .iconfont {
-    font-size: 28px;
+    color: #66cc99;
+    font-size: 18px;
     cursor: pointer;
 }
 
 .doc-port .iconfont:hover {
-    font-size: 32px;
+    color: #44b78b;
 }
 
 .doc-port .iconfont:active {
     color: #319978;
+}
+
+.doc-port span {
+    position: absolute;
+    margin-left: 10px;
+    bottom: 7px;
+    font-size: 15px;
 }
 
 .doc-flash {

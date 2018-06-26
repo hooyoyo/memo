@@ -112,12 +112,12 @@ li {
 }
 
 .app-port .icon-font {
-    color: #66cc99;
     font-size: 20px;
     height: 36px;
 }
 
 .app-port .iconfont {
+    color: #66cc99;
     font-size: 28px;
     cursor: pointer;
 }
