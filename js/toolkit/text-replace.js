@@ -10,21 +10,26 @@ $(function() {
         var operateType = operateTypeSpan.siblings('.active').prop('class').split(/\s+/)[0];
         inpFind.val('');
         inpRelace.val('');
-        if (operateType == 'split') {
-            inpFind.prop('placeholder', '分割字符串...');
-            inpRelace.prop('placeholder', '...');
-            inpFind.removeProp('disabled');
-            inpRelace.prop('disabled', true);
-        } else if (operateType == 'replace') {
+        if (operateType == 'replace') {
             inpFind.prop('placeholder', '查找...');
             inpRelace.prop('placeholder', '替换...');
             inpFind.removeProp('disabled');
             inpRelace.removeProp('disabled');
-        } else if (operateType == 'merge') {
+        } else if (operateType == 'split') {
+            inpFind.prop('placeholder', '分割字符串...');
+            inpRelace.prop('placeholder', '...');
+            inpFind.removeProp('disabled');
+            inpRelace.prop('disabled', true);
+        }else if (operateType == 'merge') {
             inpFind.prop('placeholder', '...');
             inpRelace.prop('placeholder', '并接字符串...');
             inpFind.prop('disabled', true);
             inpRelace.removeProp('disabled');
+        } else if (operateType == 'wipe') {
+            inpFind.prop('placeholder', '...');
+            inpRelace.prop('placeholder', '...');
+            inpFind.prop('disabled', true);
+            inpRelace.prop('disabled', true);
         }
         extendOption.find('.ignore-case').addClass('active');
         extendOption.find('.delete-blank-line').removeClass('active');
@@ -78,6 +83,10 @@ $(function() {
             if (deleteBlankLine) strTextContent = strTextContent.replace(/(\n\s*\n)/g, '\n').replace(/(^\s*\n|\n\s*$)/g, '');
             if (trimForRow) strTextContent = strTextContent.replace(/(\n\s*|\s*\n)/g, '\n').replace(/(^\s*|\s*$)/g, '');
             strTextContent = strTextContent.replace(strRegExp, strReplace);
+            taTextContent.val(strTextContent);
+        } else if (operateType == 'wipe') {
+            if (deleteBlankLine) strTextContent = strTextContent.replace(/(\n\s*\n)/g, '\n').replace(/(^\s*\n|\n\s*$)/g, '');
+            if (trimForRow) strTextContent = strTextContent.replace(/(\n\s*|\s*\n)/g, '\n').replace(/(^\s*|\s*$)/g, '');
             taTextContent.val(strTextContent);
         }
     });
