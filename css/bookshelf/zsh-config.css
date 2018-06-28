@@ -37,9 +37,15 @@ li {
         margin-left: 25%;
         box-shadow: 0 0 5px #888888;
     }
+    .zone-form textarea {
+        height: 510px;
+    }
 }
 
 @media (max-width: 767px) {
+    .zone-form textarea {
+        height: 510px;
+    }
 }
 
 .main-header {
@@ -109,7 +115,6 @@ li {
 
 .zone-form textarea {
     width: 100%;
-    height: 100px;
     padding: 10px 15px;
     font-size: 15px;
     box-sizing: border-box;
@@ -218,156 +223,6 @@ li {
 }
 
 .field-content {
-    padding: 0 15px 5px 15px;
-}
-
-.field-content table {
-    font-size: 16px;
-}
-
-.field-content table input {
-    height: 32px;
-    padding: 5px 10px;
-    border-radius: 2px;
-    border: 1px solid #d9d9d9;
-}
-
-.field-content td {
-    padding-bottom: 5px;
-}
-
-.field-content span {
-    padding: 5px;
-}
-
-.td-title {
-    padding-right: 10px;
-}
-
-.td-content {
-    position: relative;
-    display: -webkit-flex; /* Safari */
-    display: flex;
-}
-
-.btn-select {
-    position: relative;
-}
-
-.btn-select input {
-    cursor: pointer;
-}
-
-.ext-widget-list {
-    position: absolute;
-    background-color: #fff;
-    font-size: 15px;
-    top: 32px;
-    right: 1px;
-    z-index: 2;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 5px #ddd;
-}
-
-.ext-widget-list > li {
-    width: 48px;
-    margin: 3px 0;
-    text-align: center;
-    cursor: pointer;
-}
-
-.ext-widget-list > li:hover {
-    background-color: #f0f0f0;
-}
-
-.ext-widget-button {
-    cursor: pointer;
-}
-
-.ext-widget-button.down-arrow {
-    position: absolute;
-    right: 4px;
-    top: 12px;
-    border: 8px solid transparent;
-    border-top: 8px solid #999;
-    width: 0;
-    height: 0;
-}
-
-.ext-widget-button.up-arrow {
-    position: absolute;
-    right: 4px;
-    bottom: 12px;
-    border: 8px solid transparent;
-    border-bottom: 8px solid #999;
-    width: 0;
-    height: 0;
-}
-
-span.unit-field {
-    position: absolute;
-    left: 150px;
-    color: #999;
-}
-
-span.result-field {
-    padding: 0;
-}
-
-#principal {
-    width: 253px;
-}
-
-#stageDeposit {
-    width: 177px;
-}
-
-#stageDepositType {
-    width: 50px;
-}
-
-#interestRate {
-    width: 177px;
-}
-
-#interestRateType {
-    width: 50px;
-}
-
-#maturity {
-    width: 122px;
-    margin-right: 5px;
-}
-
-#maturityType {
-    width: 50px;
-}
-
-#maturity + div + ul {
-    right: 77px;
-}
-
-.result-list li {
-    padding: 5px 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
-}
-
-.result-list span {
-    margin-right: 15px;
-    font-size: 15px;
-}
-
-.result-list span.long {
-    margin-right: 24px;
-}
-
-.result-list .key {
-    width: 80px;
-    font-weight: 600;
-}
-
-.result-list .value {
 }
 
 .zone-tip {
@@ -406,15 +261,15 @@ span.result-field {
     cursor: pointer;
 }
 
-#btnCaculate:hover {
+#btnConfirm:hover {
     background-color: #39aa86;
 }
 
-#btnCaculate:active {
+#btnConfirm:active {
     background-color: #319978;
 }
 
-#btnReset {
+#btnCancel {
     margin-right: 0;
     background-color: #f0f0f0;
     border: 1px solid #ddd;
@@ -424,12 +279,12 @@ span.result-field {
     font-weight: normal;
 }
 
-#btnReset:hover {
+#btnCancel:hover {
     background-color: #ececec;
     color: #969696;
 }
 
-#btnReset:active {
+#btnCancel:active {
     background-color: #e8e8e8;
 }
 

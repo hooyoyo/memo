@@ -28,6 +28,10 @@ a {
     color: inherit;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 input {
     font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;
     -webkit-appearance: none;
