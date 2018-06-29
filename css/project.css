@@ -82,11 +82,11 @@ li {
 .main-body {
 }
 
-.doc-panel {
+.proj-panel {
     margin-top: 10px;
 }
 
-.doc-title {
+.proj-title {
     background-color: #fff;
     font-size: 15px;
     font-weight: 600;
@@ -95,52 +95,57 @@ li {
     border-left: 3px solid #44b78b;
 }
 
-.doc-menu {
+.proj-menu {
     background-color: #fff;
 }
 
-.doc-menu > ul > li {
+.proj-menu > ul > li {
     border-top: 1px solid #e8e8e8;
-    padding: 5px 0;
+    padding: 10px 0;
     display: -webkit-flex; /* Safari */
     display: flex;
 }
 
-.doc-port {
-    width: 100%;
+.proj-port {
+    width: 50%;
     text-align: center;
 }
 
-.doc-port .icon-font {
+.proj-item {
     position: relative;
+    margin: 0 15px;
     font-size: 20px;
-    height: 26px;
-    text-align: left;
-    padding: 5px 0 5px 18px;
-}
-
-.doc-port .iconfont {
-    color: #66cc99;
-    font-size: 18px;
+    height: 64px;
+    border-radius: 2px;
+    background-color: #44b78b;
     cursor: pointer;
 }
 
-.doc-port .iconfont:hover {
-    color: #44b78b;
+.proj-item:hover {
+    background-color: #39aa86;
 }
 
-.doc-port .iconfont:active {
-    color: #319978;
+.proj-item:active {
+    background-color: #319978;
 }
 
-.doc-port span {
+.proj-icon {
     position: absolute;
-    margin-left: 10px;
-    bottom: 7px;
-    font-size: 15px;
+    color: #008d4d;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -o-transition: all .3s linear;
 }
 
-.doc-flash {
+.proj-item:hover .proj-icon {
+    font-size: 36px;
+}
+
+.proj-flash {
 }
 
 .zone-empty {

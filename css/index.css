@@ -175,6 +175,7 @@ li {
     padding: 10px;
     padding-left: 15px;
     border-left: 3px solid #44b78b;
+    cursor: default;
 }
 
 .app-menu {
@@ -239,8 +240,49 @@ li {
     margin-top: 10px;
 }
 
+.proj-zone {
+    position: relative;
+}
+
 .proj-zone img {
     width: 100%;
+}
+
+.proj-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    border-top: 3px solid #319978;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.proj-title {
+    padding-left: 18px;
+    font-weight: 600;
+    color: #f0f0f0;
+    width: 90px;
+    height: 22px;
+    background-color: #319978;
+}
+
+.proj-title span {
+    font-size: 15px;
+}
+
+.proj-title i {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.angle-trigon {
+    width: 0px;
+    height: 0px;
+    border-color: transparent #319978;
+    border-width: 0 0 22px 22px;
+    border-style: solid;
 }
 
 .main-footer {
