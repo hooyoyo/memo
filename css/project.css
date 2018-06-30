@@ -115,7 +115,7 @@ li {
     position: relative;
     margin: 0 15px;
     font-size: 20px;
-    height: 64px;
+    height: 72px;
     border-radius: 2px;
     background-color: #44b78b;
     cursor: pointer;
@@ -132,8 +132,8 @@ li {
 .proj-icon {
     position: absolute;
     color: #008d4d;
-    top: 10px;
-    right: 15px;
+    top: 8px;
+    right: 10px;
     font-size: 32px;
     transition: all .3s linear;
     -webkit-transition: all .3s linear;
@@ -143,6 +143,40 @@ li {
 
 .proj-item:hover .proj-icon {
     font-size: 36px;
+}
+
+.proj-item p {
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    color: #f0f0f0;
+}
+
+p.item-head {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+p.item-desc {
+    padding-left: 10px;
+}
+
+p.item-foot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #339968 \9;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.item-foot i {
+    margin-left: 5px;
+    font-size: 14px;
 }
 
 .proj-flash {
