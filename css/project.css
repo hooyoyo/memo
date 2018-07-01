@@ -155,7 +155,7 @@ li {
 p.item-head {
     padding-top: 5px;
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -167,6 +167,7 @@ p.item-foot {
     position: absolute;
     bottom: 0;
     width: 100%;
+    font-size: 12px;
     text-align: center;
     background-color: #339968 \9;
     background-color: rgba(0, 0, 0, 0.1);
@@ -176,7 +177,7 @@ p.item-foot {
 
 .item-foot i {
     margin-left: 5px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .proj-flash {
