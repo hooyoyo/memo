@@ -54,7 +54,9 @@ li {
 }
 
 .nav-bar div {
+    width: 54px;
     padding: 12px 0;
+    text-align: center;
 }
 
 .nav-bar .btn:hover {
