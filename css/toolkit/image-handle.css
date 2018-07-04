@@ -166,7 +166,7 @@ li {
 }
 
 .select-option span {
-    padding: 0 5px 2px 5px;
+    padding: 2px 5px;
     margin: 0 10px;
     border-radius: 2px;
     cursor: pointer;
@@ -681,4 +681,16 @@ div#confirmMarkConfig:active {
 
 .extend-view canvas {
     cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .select-option span {
+        padding: 0 5px 2px 5px;
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+font {
 }

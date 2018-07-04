@@ -156,7 +156,7 @@ li {
 }
 
 .select-option span {
-    padding: 0 5px 2px 5px;
+    padding: 2px 5px;
     margin: 0 10px;
     border-radius: 2px;
     cursor: pointer;
@@ -312,4 +312,16 @@ li {
 
 .main-footer a {
     color: #0028fd;
+}
+
+@media (min-width: 768px) {
+    .select-option span {
+        padding: 0 5px 2px 5px;
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+font {
 }
