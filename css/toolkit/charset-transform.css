@@ -177,6 +177,7 @@ li {
 }
 
 .cell-option b {
+    margin-left: 5px;
     cursor: pointer;
 }
 
