@@ -454,9 +454,6 @@ input.sub-option {
 }
 
 @media (min-width: 768px) {
-    .select-option span {
-        padding: 0 5px 2px 5px;
-    }
 }
 
 @media (max-width: 767px) {
