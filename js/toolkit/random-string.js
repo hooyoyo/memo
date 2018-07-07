@@ -39,7 +39,7 @@ $(function() {
                 if (chars.length < 1) break;
                 var index = Math.floor(Math.random() * chars.length);
                 str += chars[index];
-                if (unique) chars.splice(index, 1);
+                if (unique) chars = chars.slice(0, index) + chars.slice(index + 1);
             }
             strs.push(str);
         }
