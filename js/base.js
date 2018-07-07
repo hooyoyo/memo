@@ -1,3 +1,12 @@
+/* 百度统计 */
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c4c8006cc29e53553256ea5387a9d297";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+
 // 参数处理：开始
 function _getQueryString_(url)
 {
