@@ -16,5 +16,6 @@ Desktop.ini
 .git
 .svn
 .cvs
+vssver2.scc
 
 *.unknown
