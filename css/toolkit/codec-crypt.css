@@ -223,6 +223,22 @@ li {
     color: #319978;
 }
 
+.cell-option b.iconfont.icon-unselect-radio::before {
+    content: "\ea33";
+    color: #319978;
+}
+
+.cell-option b.iconfont.icon-unselect-radio:hover::before {
+    content: "\ea30";
+    color: #44b78b;
+}
+
+.cell-option b.iconfont.icon-unselect-radio.active::before,
+.cell-option b.iconfont.icon-unselect-radio:active::before {
+    content: "\ea30";
+    color: #319978;
+}
+
 .field-content {
 }
 
@@ -263,18 +279,24 @@ li {
     }
 }
 
-#codec {
+#codec, #case {
     position: relative;
     margin-left: 10px;
     display: none;
 }
 
-#codec.active {
+#codec.active, #case.active {
     display: block;
 }
 
 #codec span {
     margin-left: 5px;
+    line-height: 24px;
+}
+
+#case span {
+    margin-left: 5px;
+    margin-right: 5px;
     line-height: 24px;
 }
 
