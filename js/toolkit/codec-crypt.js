@@ -10,8 +10,13 @@ $(function() {
         else $('#codec').removeClass('active');
         if ($(this).hasClass('ades')) $('#crypt').addClass('active');
         else $('#crypt').removeClass('active');
-        if ($(this).hasClass('md5') || $(this).hasClass('sha')) $('#spDedo').addClass('disable');
-        else $('#spDedo').removeClass('disable');
+        if ($(this).hasClass('md5') || $(this).hasClass('sha')) {
+            $('#case').addClass('active');
+            $('#spDedo').addClass('disable');
+        } else {
+            $('#case').removeClass('active');
+            $('#spDedo').removeClass('disable');
+        }
     });
 
     var checkSpChar = $('.check-sp-char');
@@ -21,6 +26,12 @@ $(function() {
     });
     checkSpChar.mouseleave(function () {
         $(this).removeClass('hold');
+    });
+
+    var caseUpperLowerB = $('.case-upper-lower b');
+    caseUpperLowerB.click(function () {
+        caseUpperLowerB.removeClass('active');
+        $(this).addClass('active');
     });
 
     $('.main-shell').click(function () {
@@ -49,13 +60,21 @@ $(function() {
         } else if (funcType == 'base64') {
             result = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(taSrcVal));
         } else if (funcType == 'md5') {
-            result = CryptoJS.MD5(taSrcVal).toString().toUpperCase();
+            result = CryptoJS.MD5(taSrcVal).toString();
+            if ($('.upper').hasClass('active')) result = result.toUpperCase();
         } else if (funcType == 'sha') {
-            var sha1 = CryptoJS.SHA1(taSrcVal).toString().toUpperCase();
-            var sha224 = CryptoJS.SHA224(taSrcVal).toString().toUpperCase();
-            var sha256 = CryptoJS.SHA256(taSrcVal).toString().toUpperCase();
-            var sha384 = CryptoJS.SHA384(taSrcVal).toString().toUpperCase();
-            var sha512 = CryptoJS.SHA512(taSrcVal).toString().toUpperCase();
+            var sha1 = CryptoJS.SHA1(taSrcVal).toString();
+            var sha224 = CryptoJS.SHA224(taSrcVal).toString();
+            var sha256 = CryptoJS.SHA256(taSrcVal).toString();
+            var sha384 = CryptoJS.SHA384(taSrcVal).toString();
+            var sha512 = CryptoJS.SHA512(taSrcVal).toString();
+            if ($('.upper').hasClass('active')) {
+                sha1 = sha1.toUpperCase();
+                sha224 = sha224.toUpperCase();
+                sha256 = sha256.toUpperCase();
+                sha384 = sha384.toUpperCase();
+                sha512 = sha512.toUpperCase();
+            }
             result = 'SHA1:\n' + sha1 + '\n' + 'SHA224:\n' + sha224 + '\n' + 'SHA256:\n' + sha256 + '\n' + 'SHA384:\n' + sha384 + '\n' + 'SHA512:\n' + sha512;
         } else if (funcType == 'ades') {
             var mode = $('#mode').text();
