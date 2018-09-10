@@ -62,7 +62,7 @@ $(function() {
             index = index - index % 7;
             var district = dist_num.substr(index, 6);
 
-            var millisecond = _rndNum_(13);
+            var millisecond = _rndNum_(_rndNumRange_(9, 14));
             var date = new Date(millisecond).pattern('yyyyMMdd');
 
             var number = _rndNum_(3);
