@@ -240,6 +240,14 @@ function _rndNum_(len) {
     return num;
 }
 
+// 产生随机数（指定范围 min <= n <= max）
+function _rndNumRange_(min, max) {
+    var range = max - min;
+    var rand = Math.random();
+    var num = min + Math.round(rand * range);
+    return num;
+}
+
 // 判断是否为空（含空文本）
 function _isEmpty_(x)
 {
@@ -252,7 +260,7 @@ function _isEmpty_(x)
     } else {
         return true;
     }
-};
+}
 
 // 判断是否数组
 function _isArray_(obj)
