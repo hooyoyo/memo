@@ -25,7 +25,7 @@ $(function() {
             for (var i = 0; i < taSrcVal.length; i++) {
                 var codeVal = parseInt(taSrcVal[i].charCodeAt(0), 10).toString(16);
                 while (codeVal.length < 4) codeVal = '0' + codeVal;
-                input += '\\u' + codeVal;
+                input += '\\u' + codeVal.toUpperCase();
             }
         } else if (inType == 'gbk') {
             var reg = /^(\&\#x[0-9a-f]{2}[0-9a-f]{2}\;|\?)+$/;
@@ -36,14 +36,13 @@ $(function() {
                 return;
             }
         } else if  (inType == 'unicode') {
-            var reg = /^(\\u[0-9a-f]{2}[0-9a-f]{2}|\?)+$/;
+            var reg = /^(\\u[0-9a-fA-F]{2}[0-9a-fA-F]{2}|\?)+$/;
             if (reg.test(taSrcVal)) {
                 input = taSrcVal;
             } else {
                 taTarget.val('');
                 return;
             }
-            input = taSrcVal;
         } else {
 
         }
