@@ -29,9 +29,9 @@ $(function() {
 
     var aReset = $('#aReset');
     aReset.click(function () {
-        inpFG.val('#FA2409');
-        inpFG.css('background-color', '#FA2409');
-        inpFG.css('color', '#D3D3D3');
+        inpFG.val('#fa2409');
+        inpFG.css('background-color', '#fa2409');
+        inpFG.css('color', '#d3d3d3');
         inpBG.val('rgb(32, 112, 233)');
         inpBG.css('background-color', 'rgb(32, 112, 233)');
         inpBG.css('color', 'rgb(221, 221, 221)');
@@ -55,11 +55,11 @@ function rgb2hex(inp) {
     var regRGB = /(^[rR][gG][bB]\([0-9]{1,3}, *[0-9]{1,3}, *[0-9]{1,3}\)$)|(^[rR][gG][bB][aA]\([0-9]{1,3}, *[0-9]{1,3}, *[0-9]{1,3},(1|0.[0-9]{1,2})\)$)/;
     if (regRGB.test(val)) {
         val = val.replace(/\s+/g, '').split(/[\(\)]/)[1].split(',');
-        var r = parseInt(val[0], 10).toString(16).toUpperCase();
+        var r = parseInt(val[0], 10).toString(16);//.toUpperCase();
         if (r.length < 2) r = '0' + r;
-        var g = parseInt(val[1], 10).toString(16).toUpperCase();
+        var g = parseInt(val[1], 10).toString(16);//.toUpperCase();
         if (g.length < 2) g = '0' + g;
-        var b = parseInt(val[2], 10).toString(16).toUpperCase();
+        var b = parseInt(val[2], 10).toString(16);//.toUpperCase();
         if (b.length < 2) b = '0' + b;
         var hex = '#' + r + g + b;
         inp.val(hex);
