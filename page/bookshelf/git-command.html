@@ -63,14 +63,35 @@ $ git log
 $ git log --graph
 $ git log --graph --pretty=oneline --abbrev-commit
 
-----> 版本回退 <----
+----> 回退版本 <----
 
 $ git reset --hard HEAD^
 $ git reset --hard HEAD^^
 $ git reset --hard HEAD~3
-$ git reset --hard HEAD~3
 $ git reset --hard commit_id
-注：撤销提交的前提是还没有推送到远程库。
+
+小技巧：通过reset间接合并commit的方法
+$ git reset HEAD~5
+$ git add .
+$ git commit -am "reset commit"
+$ git push --force
+
+----> 撤销提交 <----
+
+$ git revert commit_id
+注：慎用！留意与reset的差异
+
+----> 合并提交变更基点 <----
+
+$ git rebase -i [startpoint]  [endpoint]
+合并test分支到当前分支并设置为新基点
+$ git rebase test
+解决变基过程出现的冲突后继续执行
+$ git rebase --continue
+终止变基操作恢复到之前状态
+$ git rebase --abort
+进入变基交互模式
+$ git rebase -i branchX
 
 ----> 查看命令历史 <----
 
@@ -165,17 +186,6 @@ $ git branch -d feature-0
 
 强制删除
 $ git branch -D feature-x
-
-----> 变更基点 <----
-
-合并test分支到当前分支并设置为新基点
-$ git rebase test
-解决变基过程出现的冲突后继续执行
-$ git rebase --continue
-终止变基操作恢复到之前状态
-$ git rebase --abort
-进入变基交互模式
-$ git rebase -i branchX
 
 ----> 暂存当前工作现场 <----
 
