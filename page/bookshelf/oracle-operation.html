@@ -59,7 +59,7 @@ SQL> exit
 
 -- 第1步：创建临时表空间
 create temporary tablespace xxx_temp
-tempfile '/u01/app/data/picc/xxx_temp.dbf'
+tempfile '/u01/app/data/xxxx/xxx_temp.dbf'
 size 50m
 autoextend on
 next 50m maxsize 20480m
@@ -68,7 +68,7 @@ extent management local;
 -- 第2步：创建数据表空间
 create tablespace xxx_data
 logging
-datafile '/u01/app/data/picc/xxx_data.dbf'
+datafile '/u01/app/data/xxxx/xxx_data.dbf'
 size 50m
 autoextend on
 next 50m maxsize 20480m
@@ -198,7 +198,7 @@ alter tablespace USERS online;
 alter tablespace USERS offline;
 
 -- 更改表空间大小
-alter database datafile '/u01/app/data/picc/users01.dbf' autoextend on next 200m maxsize 32000m;
+alter database datafile '/u01/app/data/xxxx/users01.dbf' autoextend on next 200m maxsize 32000m;
 
 -- 更改用户配额空间大小
 alter user xxx quota 500m on xxx;
