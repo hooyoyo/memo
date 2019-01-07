@@ -38,13 +38,13 @@ li {
         box-shadow: 0 0 5px #888888;
     }
     .zone-form textarea {
-        height: 5280px;
+        height: 5350px;
     }
 }
 
 @media (max-width: 767px) {
     .zone-form textarea {
-        height: 6000px;
+        height: 6100px;
     }
 }
 
