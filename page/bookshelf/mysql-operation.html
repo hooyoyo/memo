@@ -123,8 +123,12 @@ explicit_defaults_for_timestamp = off
 # 不区分表名大小写 按小写保存和查找表 也适用于数据库名和表别名
 lower_case_table_names = 1
 
+# 查询缓存开关 可能会影响更新与插入操作 默认关闭
+#query_cache_type = 1
 # 查询缓存大小
 query_cache_size = 0
+# 查询结果限制大小 小于该值才进行缓存
+#query_cache_limit = 2097152
 # 最大连接数
 max_connections = 200
 # 同一个地址最大错误连接数 防攻击用
