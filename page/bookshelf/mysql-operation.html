@@ -194,12 +194,12 @@ innodb_write_io_threads = 8
 # 是否使用独立碎片回收purge线程及数量 默认=1
 #innodb_purge_threads = 4
 
-# 重做日志目录
+# 重做日志目录 在install初始化后就无法再改动了
 #innodb_undo_directory = /db/mysql/data
-# 开启在线回收undo日志文件
-innodb_undo_log_truncate = 1
 # 创建undo表空间个数 至少>=2 在install初始化后就无法再改动了
 #innodb_undo_tablespaces = 1
+# 开启在线回收undo日志文件
+innodb_undo_log_truncate = 1
 # 回滚段的数量 至少>=35 默认=128
 #innodb_undo_logs = 128
 # 触发truncate回收的日志大小阈值
