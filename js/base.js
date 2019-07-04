@@ -323,7 +323,7 @@ function _isWeChat_()
 
 // 提示对话框：开始
 var _tipDialog_ = {
-    html: '<div class="tip-dialog"><div class="dialog-bg" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: #000; z-index: 999; filter: alpha(opacity=20); opacity: 0.2;"></div><div class="dialog-wd" style="position: fixed; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px; z-index: 1000;"><div class="dialog-p" style="height: 100px; width: 100px; background-color: #fff;"><div class="dialog-title"><span>标题</span></div><div class="dialog-content"><p>内容</p></div><div class="dialog-button"><a>控件</a><a>控件</a></div></div></div></div>',
+    html: '<div class="tip-dialog"><div class="dialog-bg" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: #000; z-index: 999; filter: alpha(opacity=30); opacity: 0.3;"></div><div class="dialog-wd" style="position: fixed; top: 50%; left: 50%; margin-left: -50px; margin-top: -50px; z-index: 1000;"><div class="dialog-p" style="height: 100px; width: 100px; background-color: #fff;"><div class="dialog-title"><span>标题</span></div><div class="dialog-content"><p>内容</p></div><div class="dialog-button"><a>控件</a><a>控件</a></div></div></div></div>',
     popForm: function (type, title, content, fn)
     {
         if (!title) title = '提示';
@@ -331,20 +331,20 @@ var _tipDialog_ = {
         var cover = $(_tipDialog_.html);
         cover.find('.dialog-wd').prop('style', 'position: fixed; top: 50%; left: 50%; margin-left: -120px; margin-top: -240px; z-index: 1000;');
         cover.find('.dialog-p').prop('style', 'height: auto; width: 240px; background-color: #fff; min-height: 120px; max-height: 480px; border-radius: 3px; box-shadow: 0 0 3px #999;');
-        cover.find('.dialog-title').prop('style', 'height: 30px; font-size: 15px; font-weight: 600; line-height: 30px; text-align: center; border-top-left-radius: 3px; border-top-right-radius: 3px; color: #fff; background-color: #fdce51; box-shadow: 0 1px 1px #ddd');
+        cover.find('.dialog-title').prop('style', 'height: 30px; font-size: 15px; font-weight: 600; line-height: 30px; text-align: center; border-top-left-radius: 3px; border-top-right-radius: 3px; box-shadow: 0 1px 1px #ddd');
         cover.find('.dialog-title').children('span').text(title);
-        cover.find('.dialog-content').prop('style', 'height: auto; min-height: 60px; max-height: 420px; overflow-y: auto;');
+        cover.find('.dialog-content').prop('style', 'height: auto; min-height: 60px; max-height: 420px; font-size: 14px; text-align:center; display: flex; justify-content: center; align-items: center; overflow-y: auto;');
         cover.find('.dialog-content').children('p').prop('style', 'margin: 0; padding: 5px 10px; word-wrap: break-word');
         cover.find('.dialog-content').children('p').html(content);
         if (type) {
-            cover.find('.dialog-button').prop('style', 'height: 30px; font-size: 15px; line-height: 30px; text-align: center;');
+            cover.find('.dialog-button').prop('style', 'height: 30px; font-size: 15px; line-height: 30px; text-align: center; border-top: 1px solid #ddd');
             switch (type) {
                 case 'confirm':
                     cover.find('.dialog-button').children('a').prop('style', 'height: 30px; font-size: 15px; line-height: 30px; text-align: center;');
-                    cover.find('.dialog-button').children('a').first().prop('style', 'padding: 5px 45px; color: #fff; background-color: #ec5d39; border-bottom-left-radius: 3px; cursor: pointer;');
+                    cover.find('.dialog-button').children('a').first().prop('style', 'padding: 5px 45px; border-bottom-left-radius: 3px; cursor: pointer;');
                     cover.find('.dialog-button').children('a').first().addClass('btn-confirm');
                     cover.find('.dialog-button').children('a').first().text('确定');
-                    cover.find('.dialog-button').children('a').last().prop('style', 'padding: 5px 45px; color: #adadad; background-color: #ececec; border-bottom-right-radius: 3px; cursor: pointer;');
+                    cover.find('.dialog-button').children('a').last().prop('style', 'padding: 5px 45px; color: #adadad; border-bottom-right-radius: 3px; cursor: pointer; border-left: 1px solid #ddd;');
                     cover.find('.dialog-button').children('a').last().addClass('btn-cancel');
                     cover.find('.dialog-button').children('a').last().text('取消');
                     break;
