@@ -80,11 +80,11 @@ $(function() {
             else sqlSelect = sqlset['sqlall'];
             if (shiftType == 'upper') {
                 sqlSelect.forEach(function (kw) {
-                    taSrcVal = taSrcVal.replace(new RegExp('(^|\\s+)' + kw + '(\\s+|$)', 'ig'), '$1' + kw.toUpperCase() + '$2');
+                    taSrcVal = taSrcVal.replace(new RegExp('(^|\\s+)' + kw + '(\\s+|;|$)', 'ig'), '$1' + kw.toUpperCase() + '$2');
                 });
             } else {
                 sqlSelect.forEach(function (kw) {
-                    taSrcVal = taSrcVal.replace(new RegExp('(^|\\s+)' + kw + '(\\s+|$)', 'ig'), '$1' + kw.toLowerCase() + '$2');
+                    taSrcVal = taSrcVal.replace(new RegExp('(^|\\s+)' + kw + '(\\s+|;|$)', 'ig'), '$1' + kw.toLowerCase() + '$2');
                 });
             }
             taRstVal = taSrcVal;
