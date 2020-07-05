@@ -149,7 +149,7 @@ select * from dba_ts_quotas;
 -- 查看所有表空间
 select * from dba_tablespaces;
 select * from dba_data_files;
-select tablespace_name,sum(bytes)/1024/1024 as MB　from dba_data_files group by tablespace_name;
+select tablespace_name, sum(bytes) / 1024 / 1024 as MB　from dba_data_files group by tablespace_name;
 
 -- 查表空间对应文件
 select t.ts#,t.name,d.ts#,d.name from v$tablespace t,v$datafile d where t.ts#=d.ts#;
@@ -193,6 +193,10 @@ SELECT Owner,Tablespace_name,Segment_Name,Segment_Type,Sum(bytes)/1024/1024 sums
 FROM Dba_Extents
 GROUP BY Owner,Tablespace_name,Segment_Name,Segment_Type
 ORDER BY sums;
+
+-- 表空间文件上线/下线
+alter tablespace USERS online;
+alter tablespace USERS offline;
 
 -- 创建表空间时指定多个数据文件
 create tablespace xxx_data
