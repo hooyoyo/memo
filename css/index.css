@@ -1,0 +1,295 @@
+html,
+body {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+ul {
+    -webkit-padding: 0;
+    -webkit-margin: 0;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+@media (min-width: 768px) {
+    html {
+        height: 100%;
+    }
+    body {
+        max-width: 50%;
+        margin-left: 25%;
+        box-shadow: 0 0 5px #888888;
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+.main-header {
+}
+
+.logo-title {
+    background-color: #319978;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+    height: 32px;
+    padding-top: 3px;
+}
+
+.user-panel {
+    position: relative;
+    background-color: #319978;
+    padding: 12px;
+    height: 54px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.user-portrait {
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: rgba(255, 255, 255, 0.3);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.user-info {
+    color: #f0f0f0;
+    font-size: 16px;
+}
+
+.user-info-list {
+    padding-left: 15px;
+}
+
+.user-name {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.user-mark {
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+.user-sign {
+}
+
+.user-sign-value {
+    color: #fdce51;
+}
+
+.user-grade {
+}
+
+.user-grade-value {
+    color: #fdce51;
+    font-size: 15px;
+    padding-left: 3px;
+}
+
+.user-point {
+    margin-left: 5px;
+}
+
+.user-point-value {
+    color: #fdce51;
+    font-size: 13px;
+    padding-left: 3px;
+}
+
+.user-tool {
+    position: absolute;
+    right: 12px;
+    color: #f0f0f0;
+    font-size: 16px;
+}
+
+.user-tool .iconfont {
+    font-size: 28px;
+}
+
+.user-tool > i {
+    margin-left: 8px;
+}
+
+.user-tool > span {
+    position: absolute;
+    left: 19px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.user-property, .user-statistics {
+    background-color: #fff;
+    padding: 5px 0;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.user-property > div, .user-statistics > div {
+    width: 33.5%;
+    color: #666;
+    text-align: center;
+}
+
+.user-property .icon-font, .user-statistics .icon-font {
+    font-size: 20px;
+}
+
+.user-activity-count {
+    color: #0099cc;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-activity-type {
+    font-size: 12px;
+}
+
+.main-body {
+
+}
+
+.app-panel {
+    margin-top: 10px;
+}
+
+.app-title {
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #44b78b;
+    cursor: default;
+}
+
+.app-menu {
+    background-color: #fff;
+}
+
+.app-menu > ul > li {
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 0;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.app-port {
+    width: 25%;
+    text-align: center;
+}
+
+.app-port .icon-font {
+    font-size: 20px;
+    height: 36px;
+}
+
+.app-port .iconfont {
+    color: #66cc99;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.app-port .iconfont:hover {
+    font-size: 32px;
+}
+
+.app-port .iconfont:active {
+    color: #319978;
+}
+
+.app-flash {
+
+}
+
+.doc-panel {
+    margin-top: 10px;
+}
+
+.doc-title {
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #44b78b;
+}
+
+.doc-title i {
+    color: #319978;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.proj-panel {
+    margin-top: 10px;
+}
+
+.proj-zone {
+    position: relative;
+}
+
+.proj-zone img {
+    width: 100%;
+}
+
+.proj-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    border-top: 3px solid #319978;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.proj-title {
+    padding-left: 18px;
+    font-weight: 600;
+    color: #f0f0f0;
+    width: 90px;
+    height: 22px;
+    background-color: #319978;
+}
+
+.proj-title span {
+    font-size: 15px;
+}
+
+.proj-title i {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.angle-trigon {
+    width: 0px;
+    height: 0px;
+    border-color: transparent #319978;
+    border-width: 0 0 22px 22px;
+    border-style: solid;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.main-footer a {
+    color: #0028fd;
+}

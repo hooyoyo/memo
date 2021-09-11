@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>加密解密和编解码</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/codec-crypt.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../lib/Plugin/crypto/crypto.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/codec-crypt.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>加密解密和编解码</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option func-type">
+            <div><b class="cell-bulletin">方法</b></div>
+            <div class="cell-option">
+                <span class="uri">URI</span>
+                <span class="base64 active">BASE64</span>
+                <span class="md5">MD5</span>
+                <span class="sha">SHA</span>
+                <span class="ades">AES/DES</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taSource" maxlength="999999999" cols="999999999" rows="999999999" placeholder="待处理内容..."></textarea>
+        </div>
+
+        <div class="field-title result-ctrl">
+            <div style="margin: 1px 0"><b class="cell-bulletin">结果</b></div>
+            <div id="codec"><b class="iconfont icon-select-empty check-sp-char"></b><span class="option-desc">保留特殊字符</span></div>
+            <div id="case" class="cell-option case-upper-lower">
+                <b class="upper iconfont icon-unselect-radio active"></b><span class="static">大写</span>
+                <b class="lower iconfont icon-unselect-radio"></b><span class="static">小写</span>
+            </div>
+            <div id="crypt" class="cell-option">
+                <input id="key" type="text" maxlength="20" placeholder="录入密钥..."/>
+                <span id="mode">选择...</span>
+                <ul style="display: none">
+                    <li>AES</li>
+                    <li>DES</li>
+                    <li>RC4</li>
+                    <li>Rabbit</li>
+                    <li>TripleDES</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taResult" maxlength="999999999" cols="999999999" rows="999999999" placeholder="处理后..."></textarea>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>处理含<span>空白</span>字符。</p>
+    </div>
+
+    <div class="zone-act">
+        <span id="spEndo" class="sp-btn">编制</span>
+        <span id="spDedo" class="sp-btn">解析</span>
+        <span id="spClear" class="sp-btn">清空</span>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

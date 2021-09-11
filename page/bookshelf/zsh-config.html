@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zsh配置文件</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/zsh-config.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/zsh-config.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>Zsh配置文件</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+            <textarea maxlength="99999" placeholder="..." readonly>
+# 设置历史命令记录文件
+HISTFILE=~/.zshistory
+HISTSIZE=1000
+SAVEHIST=1000
+# 查看历史记录
+bindkey -e
+
+# 加载指定的配置文件
+zstyle :compinstall filename '/home/xxx/.zshrc'
+
+# 自动补全
+autoload -Uz compinit
+compinit
+
+# 命令提示符 {{{
+RPROMPT=$(echo '%{\033[31m%}%D %T%{\033[m%}')
+PROMPT=$(echo '%{\033[34m%}%M:%{\033[32m%}%/
+%{\033[36m%}%n %{\033[01;31m%}>%{\033[33m%}>%{\033[34m%}>%{\033[m%} ')
+# }}}
+            </textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>理财计算</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/finance-caculate.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/finance-caculate.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>理财损益计算器</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option finance-type">
+            <div><b class="cell-bulletin">类型</b></div>
+            <div class="cell-option active">
+                <span class="active">分期复利</span>
+            </div>
+        </div>
+
+        <div id="caculator" class="field-content">
+            <table>
+                <tr>
+                    <td class="td-title">初始本金</td>
+                    <td><input id="principal" maxlength="16" placeholder="请录入金额..." /></td>
+                </tr>
+                <tr>
+                    <td class="td-title">每期追加</td>
+                    <td class="td-content">
+                        <input id="stageDeposit" maxlength="16" placeholder="请录入金额..." />
+                        <span>按</span><div class="btn-select"><input id="stageDepositType" class="sub-option" type="text" maxlength="5" placeholder="年" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                        <ul class="ext-widget-list" style="display: none">
+                            <li class="day">日</li>
+                            <li class="week">周</li>
+                            <li class="month">月</li>
+                            <li class="quarter">季</li>
+                            <li class="year">年</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title">复利率</td>
+                    <td class="td-content">
+                        <input id="interestRate" maxlength="16" placeholder="请录入利率..." />
+                        <span class="unit-field">%</span>
+                        <span>按</span><div class="btn-select"><input id="interestRateType" class="sub-option" type="text" maxlength="5" placeholder="年" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                        <ul class="ext-widget-list" style="display: none">
+                            <li class="day">日</li>
+                            <li class="week">周</li>
+                            <li class="month">月</li>
+                            <li class="quarter">季</li>
+                            <li class="year">年</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title">存期</td>
+                    <td class="td-content">
+                        <input id="maturity" maxlength="16" placeholder="请录入期限..." />
+                        <div class="btn-select"><input id="maturityType" class="sub-option" type="text" maxlength="5" placeholder="年" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                        <ul class="ext-widget-list" style="display: none">
+                            <li class="day">日</li>
+                            <li class="week">周</li>
+                            <li class="month">月</li>
+                            <li class="quarter">季</li>
+                            <li class="year">年</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title" colspan="2" style="padding-top: 5px;font-weight: bold">计算结果：</td>
+                </tr>
+                <tr>
+                    <td class="td-title">总存款</td>
+                    <td class="td-content"><span id="totalPrincipal" class="result-field"></span></td>
+                </tr>
+                <tr>
+                    <td class="td-title">利息</td>
+                    <td class="td-content"><span id="totalInterest" class="result-field"></span></td>
+                </tr>
+                <tr>
+                    <td class="td-title">本息总和</td>
+                    <td class="td-content"><span id="totalSum" class="result-field"></span></td>
+                </tr>
+                <tr>
+                    <td class="td-title">收益率</td>
+                    <td class="td-content"><span id="totalYieldRate" class="result-field"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>建议期限单位保持一致，若选择的期限单位不同时，按<span>“1月=4.33周=30.5日”</span>换算，有误差。</p>
+    </div>
+
+    <div class="zone-act">
+        <div id="btnCaculate" class="div-btn">计算</div>
+        <div id="btnReset" class="div-btn">重置</div>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

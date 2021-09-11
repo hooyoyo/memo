@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>二维码制作</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/2d-code.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../lib/Plugin/barcode/JsBarcode.all.min.js"></script>
+    <script src="../../lib/Plugin/qrcode/qrcode.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/2d-code.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>二维码制作</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option code-type">
+            <div><b class="cell-bulletin">类型</b></div>
+            <div class="cell-option">
+                <span class="qr active">点块码</span>
+                <span class="bar">条形码</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taSource" maxlength="999999999" cols="999999999" rows="999999999" placeholder="包含的内容信息..."></textarea>
+        </div>
+
+        <div id="qr" class="code-panel">
+            <div id="qrcode" class="thumbnail"></div>
+            <ul>
+                <li><span class="option-title">大小</span><input id="qrSize" class="sub-option" type="text" maxlength="4" placeholder="128"/></li>
+                <li><span class="option-title">容错</span><input id="qrCLevel" class="sub-option" type="text" maxlength="1" placeholder="H"/></li>
+                <li><span class="option-title">前景色</span><input id="qrFgColor" class="sub-option" type="text" maxlength="7" placeholder="#000"/></li>
+                <li><span class="option-title">背景色</span><input id="qrBgColor" class="sub-option" type="text" maxlength="7" placeholder="#FFF"/></li>
+                <li class="download"><span class="option-title">下载</span><a class="a-rsrc" href="" download=""><i class="iconfont icon-download btn-download"></i></a></li>
+            </ul>
+        </div>
+
+        <div id="bar" class="code-panel hidden">
+            <div id="barcode" class="thumbnail"></div>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><span class="option-title">码制</span><input id="barMode" class="sub-option" type="text" maxlength="10" placeholder="CODE128"/></li>
+                            <li><span class="option-title">细处宽</span><input id="barWidth" class="sub-option" type="text" maxlength="1" placeholder="2"/></li>
+                            <li><span class="option-title">条形高</span><input id="barHeight" class="sub-option" type="text" maxlength="3" placeholder="100"/></li>
+                            <li class="download"><span class="option-title">下载</span><a class="a-rsrc" href="" download=""><i class="iconfont icon-download btn-download"></i></a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><span class="option-title">前景色</span><input id="barFgColor" class="sub-option" type="text" maxlength="7" placeholder="#000"/></li>
+                            <li><span class="option-title">背景色</span><input id="barBgColor" class="sub-option" type="text" maxlength="7" placeholder="#FFF"/></li>
+                            <li class="cell-option"><b class="iconfont icon-select-empty show-value active"></b><span class="option-title">显示文本</span></li>
+                            <li class="empty-li last-line"></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>建议用<span>“默认”</span>的参数设置，内容要符合码制。</p>
+    </div>
+
+    <div class="zone-act">
+        <span id="spGenerate" class="sp-btn">生成</span>
+        <span id="spReset" class="sp-btn">重置</span>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<div class="extend-view">
+    <canvas id="extCanvas"></canvas>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

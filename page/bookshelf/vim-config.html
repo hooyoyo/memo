@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VIM配置文件</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/vim-config.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/vim-config.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>VIM配置文件</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+            <textarea maxlength="99999" placeholder="..." readonly>
+" ==> 常规 <==
+
+" 关闭vi兼容模式
+set nocp
+
+" 语法高亮
+syntax enable
+syntax on
+" 配色主题
+colorscheme elflord
+
+" 显示行号
+set number
+" 显示标尺
+set ruler
+" 当前行显示下划线
+set cursorline
+
+" 启用鼠标
+set mouse=a
+" 允许退格键删除
+set backspace=indent,eol,start
+
+" 自动缩进
+set autoindent
+" 制表符长度
+set tabstop=4
+" 统一缩进长度
+set shiftwidth=4
+set softtabstop=4
+" 禁止空格替换制表符(如要保持某些代码风格一致可启用)
+set noexpandtab
+
+" 根据语法高亮折叠代码
+set foldmethod=syntax
+" 启动时不自动折叠
+set foldlevel=100
+" 折叠栏宽度
+set foldcolumn=5
+
+" 搜索时忽略大小写
+set ignorecase
+" 搜索内容包含大写字母时仍然区分大小写
+set smartcase
+" 高亮显示搜索结果
+set hlsearch
+" 录入搜索内容时就显示结果
+set incsearch
+
+" 当文件发生变化时自动重新载入内容
+set autoread
+
+" ==> Ctags <==
+
+" 关联工作目录下的所有标签
+set tags=~/thediysrc/**/tags
+
+" ==> TagList <==
+
+" 只展开显示当前编辑文件中的标签（其他的折叠）
+let Tlist_File_Fold_Auto_Close=1
+
+" Tlist_Exit_OnlyWindow 如taglist是最后一个vim窗口则退出 winmanager下不用
+" Tlist_Auto_Open 是自动开启选项 由WinManager管理下不用到
+" Tlist_Process_File_Always 是实时更新标签选项 暂不用（配合文件树实时更新再用）
+
+" ==> MiniBufferExplorer <==
+
+" 按下Ctrl+箭头 可切换到当前窗口的上下左右窗口
+let g:miniBufExplMapWindowNavArrows=1
+" Ctrl+Tab/Ctrl+Shift+Tab移到下/上一个buffer并在当前窗口打开
+let g:miniBufExplMapCTabSwitchBufs=1
+" 不要在不可编辑内容的窗口（如目录树、标签等窗口）中打开选中的buffer
+let g:miniBufExplModSelTarget=1
+" 默认多余一个缓冲区时才启用 此处关闭 即默认打开单个文件后启用
+let g:miniBufExplorerMoreThanOne=1
+
+" ==> WinManager <==
+
+" 配合修改winmanager.vim的脚本使用
+" 判断屏幕、窗口和缓冲区的事件动作进行控制
+
+" 进入vim自动打开wm工具
+let g:AutoOpenWinManager=1
+" 如只余下两个vim窗口则退出
+let g:AutoShutWinManager=1
+" 窗口布局
+let g:winManagerWindowLayout="BufExplorer,FileExplorer|TagList"
+" 设置命名别名
+nmap wm :WMToggle&lt;cr&gt;
+
+" 参考vim帮助手册:help_usr41脚本语言以及:help eval|:help windows|:help autocmd等说明。
+            </textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

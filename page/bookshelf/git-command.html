@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GIT常用命令清单</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/git-command.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/git-command.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>GIT常用命令清单</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+            <textarea maxlength="99999" placeholder="..." readonly>
+##### GIT学习-常用命令简要记录 #####
+
+----> 设置全局用户 <----
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@domain"
+
+----> 创建版本库 <----
+
+$ mkdir learngit
+$ git init
+
+----> 添加文件到仓库 <----
+
+$ git add file1.txt
+$ git add file2.txt file3.txt
+$ git commit -m "add 3 files."
+
+----> 查看变更状态并提交 <----
+
+$ git status
+$ git diff modifiedfile.txt
+$ git add modifiedfile.txt
+$ git status
+$ git commit -m "add distributed"
+$ git status
+
+----> 查看变更历史 <----
+
+$ git log
+
+查看分支树
+$ git log --graph
+$ git log --graph --pretty=oneline --abbrev-commit
+
+----> 回退版本 <----
+
+$ git reset --hard HEAD^
+$ git reset --hard HEAD^^
+$ git reset --hard HEAD~3
+$ git reset --hard commit_id
+
+小技巧：通过reset间接合并commit的方法
+$ git reset HEAD~5
+$ git add .
+$ git commit -am "reset commit"
+$ git push --force
+
+----> 撤销提交 <----
+
+$ git revert commit_id
+注：慎用！留意与reset的差异
+
+----> 合并提交变更基点 <----
+
+$ git rebase -i [startpoint]  [endpoint]
+合并test分支到当前分支并设置为新基点
+$ git rebase test
+解决变基过程出现的冲突后继续执行
+$ git rebase --continue
+终止变基操作恢复到之前状态
+$ git rebase --abort
+进入变基交互模式
+$ git rebase -i branchX
+
+----> 查看命令历史 <----
+
+$ git reflog
+
+----> 查看工作区和仓库最新版本的区别 <----
+
+$ git diff HEAD -- readme.txt
+
+----> 撤销未暂存的修改 <----
+
+$ git checkout -- filename.txt
+注：此处若没有--符号，将变成切换到另一个分支。
+
+----> 撤销已暂存的修改 <----
+
+$ git reset HEAD filename.txt
+注：撤销的修改将从缓存区回到工作区，需要再从工作区撤销才可完全清除。
+
+----> 恢复误删除文件 <----
+
+$ git checkout -- tmp.txt
+注：用仓库中的版本替换工作区的版本，无论工作区是修改还是删除。
+
+----> 删除文件 <----
+
+$ git rm tmp.txt
+$ git commit -m "remove tmp.txt"
+
+----> 远程仓库 <----
+
+创建密钥对
+$ ssh-keygen -t rsa -C "youremail@domain"
+
+查看远程仓库
+$ git remote
+$ git remote -v
+
+删除远程仓库
+$ git remote rm origin
+添加远程仓库
+$ git remote add origin git@github.com:hooyoyo/learingit.git
+$ git push -u origin master
+推送后续提交的变更
+$ git push origin master
+
+克隆远程仓库
+$ git clone git@github.com:hooyoyo/gitclonetest.git
+
+创建与远程分支对应的本地分支
+git checkout -b dev origin/dev
+
+配置本地分支与远程分支的对应关系
+$ git branch --set-upstream dev origin/dev
+获取远程更新内容到本地
+$ git pull
+注：pull = fetch + merge
+
+获取远程仓库时指定深度
+$ git clone git@github.com:hooyoyo/gitclonetest.git --depth 1
+$ cd gitclonetest
+$ git fetch --depth 2
+$ git merge
+注：深度1代表只取最近一次提交
+
+----> 创建并切换分支 <----
+
+$ git checkout -b dev
+等同于
+$ git branch dev
+$ git checkout dev
+
+----> 查看当前分支 <----
+
+$ git branch
+
+----> 合并分支 <----
+
+不指定分支时默认目标是顶前分支
+$ git merge dev
+注：提示Fast-forward表示快进模式
+
+合并且创建新的提交
+$ git merge -m "message" dev
+
+普通模式合并会保留合并的历史轨迹
+$ git merge --no-ff -m "merge with no-ff" dev
+
+----> 删除分支 <----
+
+$ git branch -d feature-0
+
+强制删除
+$ git branch -D feature-x
+
+----> 暂存当前工作现场 <----
+
+$ git stash
+
+----> 查看暂存现场 <----
+
+$ git stash list
+
+----> 恢复暂存现场 <----
+
+$ git stash pop
+等同于
+$ git stash apply
+$ git stash drop
+
+多次暂存恢复指定现场
+$ git stash apply stash@{0}
+
+----> 打上标签 <----
+
+为当前分支最新提交打上标签
+$ git tag V0.0.01
+为历史提交打上标签
+$ git tag V0.0.00 commit-id
+注：标签不是按时间顺序列出而是按字母排序的
+
+创建带说明且指定提交的标签
+$ git tag -a V0.0.01 -m "version 0.0.01 released" commit-id
+
+查看标签说明
+$ git show V0.0.10
+
+创建带私钥签名的标签
+$ git tag -s V0.0.11 -m "signed version 0.0.11 released" commit-id
+
+----> 删除标签 <----
+
+$ git tag -d dev-0.0.11
+
+----> 远程标签 <----
+
+推送指定标签
+$ git push origin V0.0.11
+推送全部尚未推送到远程的本地标签
+$ git push origin --tags
+
+删除远程标签
+$ git push origin :refs/tag/new-0.0.12
+注：本地标签也要一起删除
+
+----> 使用GitHub分叉 <----
+
+在GitHub某些开源项目的官方仓库主页点“Fork”可克隆一份仓库到自己账号下
+再从自己仓库中克隆一份到本地进行二次开发
+通过“pull request”可申请向官方仓库推送变更 是否接受由对方决定
+
+----> 自定义GIT配置 <----
+
+全局色彩
+$ git config --global color.ui true
+
+忽略文件
+在Git工作区的根目录下创建.gitignore文件并往里加入要忽略的文件名
+可参考https://github.com/github/gitignore配置模板
+
+忽略文件的原则：忽略操作系统自动生成的文件、忽略编译生成的中间文件及可执行文件等、忽略有敏感信息的配置文件
+
+强制添加被忽略的文件
+$ git add -f test.class
+
+强制添加被忽略的文件
+$ git add -f test.class
+
+检查忽略规则
+$ git check-ignore -v test.class
+
+.gitignore文件本身要放到版本库 可对其做版本管理
+
+----> 定义别名 <----
+
+$ git config --global alias.newname oldname
+如：
+$ git config --global alias.unstage 'reset HEAD'
+$ git config --global alias.last 'log -1'
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+注：最后一个log别名很实用
+
+----> 配置文件 <----
+
+配置时加上--global是当前用户生效 否则只对当前的仓库生效
+当前仓库的配置位于工作区根目录下的.git/config文件中
+当前用户的配置位于用户主目录下的.gitconfig文件中
+
+----> 搭建服务器 <----
+
+建议在类Unix/Linux操作系统下搭建部署
+1.安装git包
+2.创建git用户用于运行git服务
+3.收集用户公钥 id_rsa.pub 文件并一行一个地导入到 /home/git/.ssh/authorized_keys 文件里
+4.选定仓库目录执行git init --bare sample.git 初始化并执行 chown -R git:git sample.git 修改所有者
+5.禁用git用户的shell登录 在/etc/passwd中 把类似 git:x:1001:1001:,,,:/home/git:/bin/bash 的信息改为git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+6.克隆仓库到本地使用
+
+团队人员多时 可使用Gitosis来管理公钥
+需要支持权限控制时 可使用Gitolite管理（Git支持hook钩子 可在服务器端编写一系列脚本来控制提交等操作 以达到权限控制的目的）
+
+
+##### GIT目录文件结构 #####
+
+../.git/    工作取目录
+  +.git/   仓库目录
+    +COMMIT_EDITMSG
+    +config
+    +description
+    +gitk.cache
+    +HEAD    指向当前分支
+    +hooks/
+    +index
+    +info/
+    +logs/
+    +objects/
+    +ORIG_HEAD
+    +refs/
+
+注：GIT跟踪并管理的单元是每一次“变更”而非“文件”，跟踪管理过程是先把工作区中的每一次变更内容add到stage缓冲区，再从缓冲区commit内容到master当前分支。
+            </textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

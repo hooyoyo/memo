@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>进制换算</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/number-convert.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/number-convert.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>进制换算</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option radix-type">
+            <div><i class="iconfont icon-select"></i></div>
+            <div><span class="binary">2进制</span><span class="octal">8进制</span><span class="decimal active">10进制</span><span class="hex">16进制</span></div>
+        </div>
+
+        <div class="field-content">
+            <input id="inpData" type="text" maxlength="20" placeholder="待换算的进制数值..."/>
+        </div>
+
+        <div class="field-title result">
+            <p><span>换算结果</span></p>
+        </div>
+
+        <div class="field-content">
+            <ul id="ulResult" class="result-list">
+                <li><p><span class="key long">2进制</span><span class="value binary"></span></p></li>
+                <li><p><span class="key long">8进制</span><span class="value octal"></span></p></li>
+                <li><p><span class="key">10进制</span><span class="value decimal"></span></p></li>
+                <li><p><span class="key">16进制</span><span class="value hex"></span></p></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

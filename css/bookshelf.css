@@ -1,0 +1,159 @@
+html,
+body {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #393939;
+}
+
+ul {
+    -webkit-padding: 0;
+    -webkit-margin: 0;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+@media (min-width: 768px) {
+    html, body {
+        height: 100%;
+    }
+    .main-shell {
+        min-height: 100%;
+        max-width: 50%;
+        margin-left: 25%;
+        box-shadow: 0 0 5px #888888;
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+.main-header {
+}
+
+.nav-bar {
+    background-color: #44b78b;
+    color: #f0f0f0;
+    line-height: 22px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.nav-bar div {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.nav-bar .btn:hover {
+    background-color: #319978;
+    cursor: pointer;
+}
+
+.nav-bar p {
+    margin: 0;
+}
+
+.nav-bar i {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.nav-bar span {
+    font-size: 22px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.nav-bar .title {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-bar .home {
+}
+
+.main-body {
+}
+
+.doc-panel {
+    margin-top: 10px;
+}
+
+.doc-title {
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #44b78b;
+}
+
+.doc-menu {
+    background-color: #fff;
+}
+
+.doc-menu > ul > li {
+    border-top: 1px solid #e8e8e8;
+    padding: 5px 0;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.doc-port {
+    width: 100%;
+    text-align: center;
+}
+
+.doc-port .icon-font {
+    position: relative;
+    font-size: 20px;
+    height: 26px;
+    text-align: left;
+    padding: 5px 0 5px 18px;
+}
+
+.doc-port .iconfont {
+    color: #66cc99;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.doc-port .iconfont:hover {
+    color: #44b78b;
+}
+
+.doc-port .iconfont:active {
+    color: #319978;
+}
+
+.doc-port span {
+    position: absolute;
+    margin-left: 10px;
+    bottom: 7px;
+    font-size: 15px;
+}
+
+.doc-flash {
+}
+
+.zone-empty {
+    margin-top: 10px;
+    padding: 20px 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-footer {
+}
+
+.main-footer a {
+    color: #0028fd;
+}

@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nginx常用配置信息</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/nginx-config.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/nginx-config.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>Nginx常用配置信息</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+            <textarea maxlength="99999" placeholder="..." readonly>
+# 运行用户
+#user  nobody;
+# 启动进程数 通常设置为CPU数量 多核心CPU设为核数 超过8以上无明显影响
+worker_processes  1;
+
+# 全局错误日志路径和级别
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+# 指定PID文件路径
+#pid        logs/nginx.pid;
+
+# 工作模式和连接数上限
+events {
+    # 启用 epoll 是IO多路复用中的一种方式
+    # 仅用于linux 2.6以上内核 可以极大提高nginx的性能
+    #use   epoll;
+    # 单个后台 worker process 进程的最大并发连接数
+    worker_connections  1024;
+
+    # 并发总数是 worker_processes 和 worker_connections 的乘积
+    # 即 max_clients = worker_processes * worker_connections
+    # 在设置了反向代理的情况下 max_clients = worker_processes * worker_connections / 4 此处的 4 是经验值
+    # 注意 worker_connections 值与物理内存大小有关
+    # 由于 max_clients 的值必须小于系统可打开的最大文件数 故而 worker_connections 的值需根据 worker_processes 进程数和系统可打开的最大文件数进行合理设置
+}
+
+# 配置http服务 可通过反向代理功能提供负载均衡支持
+http {
+    # 设置mime类型 由mime.types文件定义
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # 设置日志格式
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    # 全局http访问日志和级别
+    #access_log  logs/access.log  main;
+
+    # 是否调用sendfile方法 以zero copy方式来输出文件 该项是linux 2.0后出的系统调用 减少上下文切换和拷贝操作
+    # 对于普通应用置on 对于下载等磁盘I/O负载重的应用可置off 以平衡磁盘与网络I/O
+    sendfile        on;
+    # 以下2项在 tcp_nopush 开启时才起作用 且tcp_nopush 和 tcp_nodelay是互斥的
+    # 开启tcp_nopush项 数据包将等到最大时再送出去 缓解网络堵塞 是默认选项
+    #tcp_nopush     on;
+    # 开启tcp_nodelay项 将尽快发送小块数据
+    #tcp_nodelay     on;
+
+    # 连接超时时长（单位：秒）
+    #keepalive_timeout  0;
+    keepalive_timeout  60;
+
+    # 开启gzip压缩功能 默认关闭
+    #gzip  on;
+    # 设置用于处理请求压缩的缓冲区数量和大小 建议不设置 用默认值
+    #gzip_buffers 4 16k
+    # 设置gzip压缩级别 级别越底压缩速度越快压缩比越小 反之速度越慢压缩比越大
+    # 默认值1已经够用 建议设4以内 5以上的提升不明显且耗性能
+    #gzip_comp_level 4
+    # 用正则表达式设置哪些UA头不使用gz压缩 比如"MSIE [1-6]."对应IE6以下浏览器
+    #gzip_disable "MSIE [1-6]."
+    # 识别http的协议版本 当大于此值时才压缩 默认值1.1 大部分浏览器已支持gz解压缩 可不用设置
+    #gzip_http_version 1.1
+    # 当nginx作为反向代理时可设置 匹配的前提是后端服务器必须要返回包含"Via"的header头部信息 以下是可选参数
+    # off – 关闭所有的代理结果数据压缩
+    # expired – 如果header中包含”Expires”头信息，启用压缩
+    # no-cache – 如果header中包含”Cache-Control:no-cache”头信息，启用压缩
+    # no-store – 如果header中包含”Cache-Control:no-store”头信息，启用压缩
+    # private – 如果header中包含”Cache-Control:private”头信息，启用压缩
+    # no_last_modified – 启用压缩，如果header中包含”Last_Modified”头信息，启用压缩
+    # no_etag – 启用压缩，如果header中包含“ETag”头信息，启用压缩
+    # auth – 启用压缩，如果header中包含“Authorization”头信息，启用压缩
+    # any – 无条件压缩所有结果数据
+    #gzip_proxied [off|expired|no-cache|no-store|private|no_last_modified|no_etag|auth|any]
+    # 开启静态文件预处理 可以读取预先压缩的gz文件 减少每次请求进行gzip压缩的CPU资源消耗
+    # 为兼容不支持gzip的浏览器 启用此项要同时保留原始静态文件和gz文件 将增加磁盘空间 可以利用反向代理实现只保留gz文件
+    #gzip_static on|off
+    # 设置需要压缩的MIME类型 如不在设置类型范围内的请求不进行压缩
+    # 不能用通配符 如text/*等 默认值text/html 无论是否指定 text/html都已压缩 可参考conf/mime.types查看类型范围
+    #gzip_types text/html
+
+    # 客户端传送信息大小
+    client_max_body_size 20m;
+
+    # 配置虚拟主机
+    server {
+        # 监听端口号
+        listen       80;
+        # 主机名称
+        server_name  localhost;
+
+        # 定义默认网站根目录（支持相对和绝对地址）
+        # 在 server 中的 root 定义的是全局根目录 当 root 在 location 中定义时 将根据不同访问路径指向不同根目录
+        #root html;
+
+        # 支持的字符集
+        #charset utf-8;
+
+        # 本虚拟主机的访问日志和级别
+        #access_log  logs/host.access.log  main;
+
+        # 请求访问URL的地址解析
+        location / {
+            # 设置对应的默认根目录
+            root   html;
+            # 定义默认首页索引页
+            index  index.jsp index.py index.html index.htm;
+        }
+
+        # 将访问地址解析到虚拟目录
+        location /test {
+            # 设置虚拟目录路径 末位要加"/"符号
+            alias   /tmp/x/html/;
+        }
+
+        # 定义指定错误代码的提示页
+        #error_page  404              /404.html;
+
+        # 定义多个错误代码指向的提示页
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # 静态文件由nginx自行处理
+        location ~ ^/(img|js|css|flash|media|static)/ {
+            # 设置过期30天 如更新少 可设大一些 如经常更新 设置小一些
+            expires 30d;
+        }
+
+        # 代理动态请求指向apache的监听服务
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # 动态访问请求转发给Java的 tomcat 服务
+        #location ~ \.(jsp|do)$ {
+        #    proxy_pass http://localhost:8080;
+        #}
+
+        # 动态访问请求转发给Python的 uWSGI 处理
+        #location / {
+        #    include            uwsgi_params;
+        #    uwsgi_pass         127.0.0.1:8000;
+        #    proxy_redirect     off;
+        #    proxy_set_header   Host $host;
+        #    proxy_set_header   X-Real-IP $remote_addr;
+        #    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        #    proxy_set_header   X-Forwarded-Host $server_name;
+        #}
+
+        # 动态访问请求转发给PHP的 FastCGI 处理
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    #fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        #    #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    #fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        #    #fastcgi_param PATH_INFO       $fastcgi_path_info;
+        #    #fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        #    #fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #    #include        fastcgi_params;
+        #    include        fastcgi.conf;
+        3}
+
+        # 禁止访问.xx文件 一般在与 apache 整合应用时设置使用
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    ################################################################
+    # 反向代理 - 前端调度
+    server {
+        listen  9991;
+        location /TestReverseProxy {
+            # 将映射到192.168.100.201:9001站点的/TestReverseProxy目录
+            proxy_pass      http://192.168.100.201:9001/TestReverseProxy;
+            # 以下定义本代理调度后传给后端服务器的头部信息
+            # 加入初始请求客户端IP地址 也要后端服务器配置支持才获取得到 IIS/Apache/Nginx开启支持的配置方式各不相同
+            # 否则后端受理服务器日志中取到的请求IP地址将会是本代理机的
+            proxy_set_header  X-Real-IP  $remote_addr;
+        }
+
+        location /TestReverseProxyEX {
+            # 将映射到192.168.100.233:8080站点的/TestReverseProxy目录
+            proxy_pass      http://192.168.100.233:8080/TestReverseProxy;
+            proxy_set_header  X-Real-IP  $remote_addr;
+        }
+    }
+
+    # 反向代理 - 服务后端（之一）
+    server {
+        listen  9001;
+        location / {
+            root www;
+            index index.html index.htm;
+        }
+    }
+
+    ################################################################
+    # 负载均衡配置参考
+    # 负载均衡 - 前端调度
+    server {
+        listen  9990;
+        location /TestLoadBalance {
+            # 这里指向名称为colony.local的负载均衡服务器集群
+            proxy_pass      http://colony.local;
+            # 仍然是在头部加入原始请求IP的标识 后端服务器要有相应配置来获取
+            proxy_set_header  X-Real-IP  $remote_addr;
+        }
+    }
+
+    # 负载均衡 - 负载后端集群
+    # 集群命名可用任意字符串 不一定按照如下x.x的格式
+    upstream colony.local {
+        # 指定算法
+        # 默认为轮询 自带 如有服务器宕机 自动踢出
+        #ip_hash; # 自带 每个请求按访问ip的hash结果分配 用于session维持
+        #url_hash; # 第三方 按访问url的hash结果来分配 后端为缓存时比较有用
+        #fair; # 第三方 按后端服务器的响应时间来分配请求 响应时间短的优先分配
+
+        # 用自带的weight算法 按权重比例分配访问量
+        server 192.168.100.201:8081 weight=1;
+        server 192.168.100.210:8008 weight=2;
+        server 192.168.100.221:8000 weight=3;
+
+        # 使用 down 参数表示不参与负载均衡的调度分配
+        #server 192.168.100.XXX:XXXX down;
+        # 使用 backup 表示仅当所有其他机器down或者busy时才分配 该机器压力将最小
+        #server 192.168.100.XXX:XXXX backup;
+    }
+
+    # 负载均衡-负载后端实例（之一）
+    server {
+        listen  8081;
+        location / {
+            root www;
+            index index.html index.htm;
+        }
+    }
+}
+            </textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

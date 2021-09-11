@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>图像调整与加工</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/image-handle.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/image-handle.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>图像调整与加工</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option load-type">
+            <div><b class="cell-bulletin">图像</b></div>
+            <div class="cell-option">
+                <span class="local active">本地上传</span>
+                <span class="online">网络链接</span>
+            </div>
+        </div>
+
+        <div class="field-content resource-file online-file" style="display: none;">
+            <div style="position: relative"><input id="inpUrl" type="text" maxlength="2000" placeholder="网络图片的链接地址..."/></div>
+        </div>
+
+        <div class="field-title resource-file local-file">
+            <div id="selFile">
+                <input id="inpCover" type="text" placeholder="选择文件" readonly />
+                <input id="inpFile" type="file" accept="image/*" />
+            </div>
+            <div>
+                <input id="fileName" type="text" placeholder="尚未选择任何文件" readonly />
+            </div>
+            <div>
+                <input id="fileWidth" type="hidden" />
+                <input id="fileHeight" type="hidden" />
+            </div>
+        </div>
+
+        <div class="field-content">
+            <div style="position: relative"><input id="inpMark" type="text" maxlength="200" placeholder="加入水印的内容..."/><i id="iMarkConfig" class="ext-widget-button mark-config iconfont icon-gear"></i></div>
+        </div>
+
+        <div id="file" class="file-panel">
+            <div id="image"><img id="thumbnail" /></div>
+            <ul>
+                <li>
+                    <span class="option-title">转格式</span>
+                    <div class="btn-select"><input id="storeType" class="sub-option" type="text" maxlength="5" placeholder="请选择" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                    <ul class="ext-widget-list" style="display: none">
+                        <li class="unselect">原格式</li>
+                        <li class="png">PNG</li>
+                        <li class="jpeg">JPEG</li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="option-title">调大小</span>
+                    <div class="btn-select"><input id="resizeType" class="sub-option" type="text" maxlength="5" placeholder="请选择" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                    <ul class="ext-widget-list" style="display: none">
+                        <li class="unselect">原大小</li>
+                        <li class="quality" style="display: none">质量</li>
+                        <li class="ratio">缩放</li>
+                        <li class="pixel">像素</li>
+                    </ul>
+                </li>
+                <li class="resize resize-quality" style="display: none"><span class="option-title">清晰度</span><input id="resizeQuality" class="sub-option" type="text" maxlength="8" placeholder="0-1"/></li>
+                <li class="resize resize-ratio" style="display: none"><span class="option-title">比例</span><input id="resizeRatio" class="sub-option" type="text" maxlength="8" placeholder="0-1000"/></li>
+                <li class="resize resize-width" style="display: none"><span class="option-title">宽</span><input id="resizeWidth" class="sub-option" type="text" maxlength="8" placeholder="0-9999"/></li>
+                <li class="resize resize-height" style="display: none"><span class="option-title">高</span><input id="resizeHeight" class="sub-option" type="text" maxlength="8" placeholder="0-9999"/></li>
+                <li class="resize resize-origprop" style="display: none"><b class="iconfont icon-select-empty check-prigprop"></b><span class="option-desc">维持原宽高比</span></li>
+            </ul>
+        </div>
+
+        <div class="zone-download">
+            <span class="option-title">下载</span><a class="a-rsrc" href="" download=""><i class="iconfont icon-download btn-download"></i></a>
+            <span class="option-title" style="margin-left: 6px">取编码</span><i class="iconfont icon-codec btn-dataurl" style="font-weight: bold"></i>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>图像<span>“质量”</span>越低，则<span>清晰度</span>越小，文件也越小；<span>“缩放”</span>是将<span>比例</span>乘以宽和高进行处理。</p>
+    </div>
+
+    <div class="zone-act">
+        <div id="btnHandle" class="div-btn">加工</div>
+        <div id="btnReset" class="div-btn">重置</div>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<div class="extend-panel ext-mark-config">
+    <div id="extMarkConfig">
+        <div class="extend-title config-title">
+            <p><span>水印字体配置</span><i id="closeMarkConfig" class="iconfont icon-cross"></i></p>
+        </div>
+        <div class="extend-title">
+            <p><span>字体大小（px）</span></p>
+        </div>
+        <div class="extend-content">
+            <input id="inpMarkSize" type="text" maxlength="8" placeholder="12">
+        </div>
+        <div class="extend-title">
+            <p><span>字体位置（坐标）</span></p>
+        </div>
+        <div class="extend-content">
+            <input id="inpMarkPosition" type="text" maxlength="20" placeholder="15,15">
+        </div>
+        <div class="extend-title">
+            <p><span>字体颜色（RGB格式）</span></p>
+        </div>
+        <div class="extend-content">
+            <input id="inpMarkColor" type="text" maxlength="30" placeholder="rgba(255,255,255,0.5)">
+        </div>
+        <div id="confirmMarkConfig"><span>OK</span></div>
+    </div>
+</div>
+<div class="extend-panel ext-data-url">
+    <div id="extDataUrl">
+        <div class="extend-title config-title">
+            <p><span>图像编码数据</span><i id="closeDataUrl" class="iconfont icon-cross"></i></p>
+        </div>
+        <div class="extend-content">
+            <textarea id="inpDataUrl" maxlength="999999999" placeholder="图片的Base64编码结果..."></textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<div class="extend-view">
+    <canvas id="extCanvas"></canvas>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MySQL配置及维护</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/mysql-operation.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/mysql-operation.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>MySQL配置及维护</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+            <textarea maxlength="99999" placeholder="..." readonly>
+历史版本下载
+https://downloads.mysql.com/archives/community/
+
+
+无法启动且忘记密码时
+改
+innodb_force_recovery=2
+skip-grant-tables
+配置参数
+重启服务后 进入恢复模式处理问题
+
+动态修改配置
+会话级生效 set SESSION 变量=值;
+全局生效 set GLOBAL 变量=值;
+
+清理二进制日志
+reset master;
+
+
+-- 查询或配置全局参数时 加GLOBAL前缀 不加为当前会话的
+SHOW GLOBAL VARIABLES LIKE '%variable%';
+SHOW GLOBAL STATUS LIKE '%status%';
+
+-- 查线程清单
+SHOW PROCESSLIST;
+SHOW FULL PROCESSLIST;
+
+-- 线程数
+SHOW STATUS LIKE 'Threads%';
+
+-- 慢日志配置
+SHOW VARIABLES LIKE '%slow_query_log%';
+
+-- 二进制日志：
+SHOW VARIABLES LIKE '%log_bin%';
+SHOW VARIABLES LIKE '%binlog%';
+
+-- 当前最大连接数
+SHOW VARIABLES LIKE '%max_connections%';
+
+-- 权限
+SHOW GRANTS FOR 'test'@'%';
+
+-- 表缓存大小
+SHOW STATUS LIKE 'Open%tables';
+SHOW VARIABLES LIKE '%table_open_cache%';
+
+-- 查询缓存大小
+SHOW VARIABLES LIKE '%query_cache%';
+SHOW STATUS LIKE '%Qcache%';
+
+
+============ my.cnf ============
+
+# 5.7 配置文件参考样例
+
+# 原则：每次只变动一项配置观察；确保正确的文件域、配置域和计量单位；实测监控为准。
+
+[client]
+
+port = 3306
+socket = /db/mysql/mysql.sock
+default-character-set=utf8
+
+
+[mysqld]
+
+port = 3306
+datadir = /db/mysql/data
+tmpdir = /db/mysql/tmp
+socket = /db/mysql/mysql.sock
+character-set-server = utf8
+collation-server = utf8_general_ci
+pid-file = /db/mysql/mysql.pid
+user = mysql
+
+#default-storage-engine=INNODB
+#sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+
+# 限定指定IP远程访问
+#bind-address = 127.0.0.1
+# 关闭TCP/IP远程连接方式
+#skip-networking
+# 关闭域名反向解析
+skip-name-resolve
+# 关闭外部多进程访问锁表
+skip-external-locking
+
+# 日志记录的时间戳(与系统一致)
+log_timestamps = SYSTEM
+# 自动更新时间戳
+explicit_defaults_for_timestamp = off
+# 不区分表名大小写 按小写保存和查找表 也适用于数据库名和表别名
+lower_case_table_names = 1
+
+# 查询缓存开关 可能会影响更新与插入操作 默认关闭
+#query_cache_type = 1
+# 查询缓存大小
+query_cache_size = 0
+# 查询结果限制大小 小于该值才进行缓存
+#query_cache_limit = 2097152
+# 最大连接数
+max_connections = 200
+# 同一个地址最大错误连接数 防攻击用
+#max_connect_errors =
+# 超过最大连接数时 可缓存到堆栈内等待的新请求数量
+back_log = 300
+# 可打开的最大文件数
+# 取值为 此配置项 max_connections*5 wanted_files 三者中的最大值
+open_files_limit = 2000
+# 表缓存大小
+table_open_cache = 800
+# 索引缓冲区大小(只对MyISAM表及其临时表起作用)
+#key_buffer_size = 64M
+# 服务器和客户之间的通信缓冲区大小限制
+max_allowed_packet = 4M
+# 服服务器和客户之间通讯的使用缓冲区长度 默认=16K
+net_buffer_length = 16K
+# 临时表大小
+tmp_table_size = 64M
+# 排序缓冲区大小
+#sort_buffer_size = 256K
+# 连接缓冲区大小
+#join_buffer_size = 256K
+# 顺序读时的缓冲区大小
+#read_buffer_size = 128K
+# 排序后读时的缓冲区大小
+#read_rnd_buffer_size = 256K
+# 线程缓冲区的最大线程数
+#thread_cache_size = 8
+
+# 网络读取超时
+#net_read_timeout =
+# 网络写入超时
+#net_write_timeout =
+# 交互模式下没有操作的超时时间
+#interactive_timeout =
+# 非交互模式没有操作的超时时间
+#wait_timeout =
+
+# 允许加载本地文件快速导入
+#local-infile=1
+
+# 表空间目录 如显式指定为空 可以在建表空间文件时指定不同的绝对路径
+#innodb_data_home_dir = /var/lib/mysql
+# 表空间文件扩展方式
+#innodb_data_file_path = ibdata1:10M:autoextend;ibdata2:50M:autoextend:max:2000M
+# 数据和索引缓冲区数量 size/instances 是每个 pool 大小
+innodb_buffer_pool_instances = 1
+# 数据和索引缓冲区大小 可按内存的50%-80%设置 不要占用过多
+innodb_buffer_pool_size = 2G
+# InnoDB日志缓冲区大小 可按buffer_pool的25%设置
+innodb_log_buffer_size = 20M
+# InnoDB日志文件大小
+innodb_log_file_size = 500M
+# 刷新日志的方式 同步/异步 建议用O_DIRECT设置(尤其是在类UNIX系统中)
+innodb_flush_method = O_DIRECT
+# 日志提交方式 跟时间频率和事务颗粒度有关 0:最快 1:最安全 2:折中
+innodb_flush_log_at_trx_commit = 2
+# 取值>0时 每写入n条SQL语句或n个事务 刷新二进制日志到磁盘 取值=0时 不主动刷新由操作系统定
+#sync_binlog = 1
+# 等待数据锁的超时时间 避免死锁的一种机制
+innodb_lock_wait_timeout = 60
+# 读IO线程数(多核CPU可充分利用)
+innodb_read_io_threads = 8
+# 写IO线程数(多核CPU可充分利用)
+innodb_write_io_threads = 8
+# 是否使用独立碎片回收purge线程及数量 默认=1
+#innodb_purge_threads = 4
+
+# 重做日志目录 在install初始化后就无法再改动了
+#innodb_undo_directory = /db/mysql/data
+# 创建undo表空间个数 至少>=2 在install初始化后就无法再改动了
+#innodb_undo_tablespaces = 1
+# 开启在线回收undo日志文件
+innodb_undo_log_truncate = 1
+# 回滚段的数量 至少>=35 默认=128
+#innodb_undo_logs = 128
+# 触发truncate回收的日志大小阈值
+innodb_max_undo_log_size = 500M
+# 控制trncate回收undo日志频率 在回滚段没有释放前不会回收
+#innodb_purge_rseg_truncate_frequency = 128
+
+# 日志组目录
+#innodb_log_group_home_dir = /var/lib/mysql
+
+# 查询日志 跟踪数据库运行时非常有帮助 实际环境中不要用
+#general_log =
+
+# 二进制变更日志
+#log-bin = /db/mysql/mysql-bin
+# 二进制变更日志格式 mixed 是推荐值
+#binlog_format = mixed
+# 二进制日志大小
+#max_binlog_size =
+# 临时存放某次事务SQL语句的缓存大小
+#binlog_cache_size =
+# 二进制日志缓冲区大小
+#max_binlog_cache_size =
+# 清理过期日志的时间段
+#expire_logs_days = 5
+
+# 文本形式的变更日志
+#log-update =
+
+# 慢速查询日志
+slow_query_log = 1
+# 慢查询日志目录
+#slow_query_log_file=/var/mysql/logs/slow.log
+# 慢查询时间限度
+long_query_time = 10
+# 启用没有使用索引查询的日志
+log-queries-not-using-indexes
+
+# 导致无法启动的错误日志
+log-error = /db/mysql/mysql.err
+# 告警日志
+#log-warnings =
+
+# 启用强制恢复模式 用于处理数据库错误状态无法启动的问题 默认=0
+# 0 - 正常的关闭和启动，不执行任何强制恢复操作；
+# 1 - 忽略检查corrupt页，尝试让mysqld服务继续运行； // 一般设置为该值即可
+# 2 - 阻止InnoDB主线程运行； // 若crash发生在purge环节可用该值
+# 3 - 恢复的时候，不进行事务回滚；
+# 4 - 阻止insert缓冲区的合并操作；  // 该值可能永久损坏数据文件 要删除和重建辅助索引
+# 5 - 不检查undo重做日志；  // 该值可能永久损坏数据文件
+# 6 - 不执行roll-forward前滚操作；  // 数据库页处于废止状态 继续可能引起更多损坏
+#innodb_force_recovery = 1
+
+# 忽略权限表 管理员忘记密码时可用
+#skip-grant-tables
+
+
+[mysqldump]
+
+quick
+# 最大连接数
+#max_connections = 10
+# 同一个地址最大错误连接数 防攻击用
+#max_connect_errors =
+# 服务器和客户之间的通信缓冲区大小限制
+max_allowed_packet = 200M
+# 服服务器和客户之间通讯的使用缓冲区长度 默认=16K
+#net_buffer_length = 16384
+# 网络读取超时
+#net_read_timeout =
+# 网络写入超时
+#net_write_timeout =
+# 交互模式下没有操作的超时时间
+#interactive_timeout =
+# 非交互模式没有操作的超时时间
+#wait_timeout =
+
+
+[mysql]
+# 开启命令自动补全
+auto-rehash
+# 是否启用安全更新模式 强制要求指定where、limit条件及索引字段
+#safe-updates
+# 允许加载本地文件快速导入
+#local-infile=1
+
+            </textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

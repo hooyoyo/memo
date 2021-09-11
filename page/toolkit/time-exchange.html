@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>转换秒数时间</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/time-exchange.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/time-exchange.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>转换秒数时间</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+
+        <div class="field-title select-option time-second">
+            <div><b class="cell-bulletin">输入</b></div>
+            <div class="cell-option in">
+                <b class="second iconfont icon-unselect-radio active"></b><span class="static">秒数</span>
+                <b class="time iconfont icon-unselect-radio"></b><span class="static">时间</span>
+            </div>
+            <div class="btn-select-list time-type" style="display: none">
+                <div class="btn-select"><input id="timeFormatIn" class="sub-option" type="text" maxlength="1" placeholder="格式" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                <ul class="ext-widget-list" style="display: none">
+                    <li class="①">yyyy-MM-dd HH:mm:ss</li>
+                    <li class="②">yyyy-MM-dd HH:mm:ss.SSS</li>
+                    <li class="③">yyyy/MM/dd HH:mm:ss</li>
+                    <li class="④">yyyy/MM/dd HH:mm:ss.SSS</li>
+                    <li class="⑤">yyyyMMddHHmmssSSS</li>
+                    <li class="⑥">yyyy年MM月dd日 HH时mm分ss秒</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taSource" maxlength="1000" placeholder="待转换内容..."></textarea>
+        </div>
+
+        <div class="field-title select-option time-second">
+            <div><b class="cell-bulletin">输出</b></div>
+            <div class="cell-option out">
+                <b class="second iconfont icon-unselect-radio active"></b><span class="static">秒数</span>
+                <b class="time iconfont icon-unselect-radio"></b><span class="static">时间</span>
+            </div>
+            <div class="btn-select-list time-type" style="display: none">
+                <div class="btn-select"><input id="timeFormatOut" class="sub-option" type="text" maxlength="1" placeholder="格式" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                <ul class="ext-widget-list" style="display: none">
+                    <li class="①">yyyy-MM-dd HH:mm:ss</li>
+                    <li class="②">yyyy-MM-dd HH:mm:ss.SSS</li>
+                    <li class="③">yyyy/MM/dd HH:mm:ss</li>
+                    <li class="④">yyyy/MM/dd HH:mm:ss.SSS</li>
+                    <li class="⑤">yyyyMMddHHmmssSSS</li>
+                    <li class="⑥">yyyy年MM月dd日 HH时mm分ss秒</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taResult" maxlength="999999999" cols="999999999" rows="999999999" placeholder="转换结果..."></textarea>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>支持多行；秒数取到<span>毫秒</span>单位；若不选格式，将以<span>yyyy-MM-dd HH:mm:ss</span>为默认格式。</p>
+    </div>
+
+    <div class="zone-act">
+        <div id="btnExchange" class="div-btn">转换</div>
+        <div id="btnClear" class="div-btn">清空</div>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

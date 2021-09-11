@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>在线编辑与排版</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../lib/Plugin/umeditor/themes/default/css/umeditor.css">
+    <link rel="stylesheet" href="../../lib/Plugin/editormd/css/editormd.css" />
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/type-edit.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../lib/Plugin/umeditor/umeditor.config.js"></script>
+    <script src="../../lib/Plugin/umeditor/umeditor.min.js"></script>
+    <script src="../../lib/Plugin/editormd/editormd.js"></script>
+    <script src="../../lib/Plugin/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/type-edit.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>在线编辑与排版</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option edit-type">
+            <div><b class="cell-bulletin">类型</b></div>
+            <div class="cell-option">
+                <span class="html">HTML</span>
+                <span class="markdown active">Markdown</span>
+            </div>
+        </div>
+
+        <div id="html" class="edit-panel hidden">
+            <script id="umeditor" name="content" type="text/plain"></script>
+        </div>
+
+        <div id="markdown" class="edit-panel">
+            <div id="editormd"></div>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b><span>移动端</span>展示效果有限，建议在<span>桌面端</span>编辑，以获得最佳使用体验。</p>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script>
+    $(function(){
+        window.um = UM.getEditor('umeditor', {
+            toolbar: [
+                'source | undo redo | selectall cleardoc | removeformat | bold italic underline strikethrough | formula | horizontal |',
+                'forecolor backcolor | superscript subscript | insertorderedlist insertunorderedlist |' ,
+                'justifyleft justifycenter justifyright justifyjustify |',
+                'link unlink | paragraph fontfamily fontsize |',
+                'emotion image video | map |',
+                'print preview fullscreen', 'drafts'
+            ],
+            initialFrameWidth: null,
+            initialFrameHeight: 300
+        });
+
+        window.md = editormd("editormd", {
+            toolbarIcons: [
+                "undo", "redo", "|",
+                "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+                "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                "list-ul", "list-ol", "hr", "|",
+                "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+                "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
+                "help"
+            ],
+            width: "99.85%",
+            height: 400,
+            syncScrolling: "single",
+            emoji: true,
+            imageUpload : true,
+            path: "../../lib/Plugin/editormd/lib/"
+        });
+    });
+</script>
+</body>
+</html>

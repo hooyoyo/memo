@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Call Google Chrome Frame in IE as ActiveX Plugin -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--  -->
+        <title>提示</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+        <!--<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">-->
+        <!-- jQuery -->
+        <script src="lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+        <!-- Base script -->
+        <script src="js/base.js"></script>
+
+        <style>
+            html, body {
+                height: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                color: #b0bec5;
+                display: table;
+                font-weight: 100;
+                font-family: 'Microsoft YaHei', sans-serif;
+            }
+
+            .container {
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .content {
+                text-align: center;
+                display: inline-block;
+            }
+
+            .title {
+                font-family: 'Microsoft YaHei';
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <div class="title" id="msg"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(function(){
+            var p = _getQueryStringParam_(window.location.href);
+            !p && (p={});
+
+            if (!p.m) {
+                p.m = "未知错误"
+            }
+            $("#msg").text(decodeURIComponent(p.m));
+
+            _dropoffUrlParam_();
+        })
+    </script>
+</html>

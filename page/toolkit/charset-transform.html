@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>字符集转码</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/charset-transform.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../lib/Plugin/gbk/gbk.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/charset-transform.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>字符集转码</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option in-type">
+            <div><b class="cell-bulletin">输入</b></div>
+            <div class="cell-option">
+                <b class="iconfont icon-select-empty unicode"></b><span>Unicode</span>
+                <!--<b class="iconfont icon-select-empty utf-8"></b><span>UTF-8</span>-->
+                <b class="iconfont icon-select-empty gbk"></b><span>GBK</span>
+                <!--<b class="iconfont icon-select-empty ascii"></b><span>ASCII</span>-->
+                <b class="iconfont icon-select-empty native active"></b><span>原始字符</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taSource" maxlength="999999999" cols="999999999" rows="999999999" placeholder="转换前的编码或字符..."></textarea>
+        </div>
+
+        <div class="field-title select-option out-type">
+            <div><b class="cell-bulletin">输出</b></div>
+            <div class="cell-option">
+                <b class="iconfont icon-select-empty unicode active"></b><span>Unicode</span>
+                <!--<b class="iconfont icon-select-empty utf-8"></b><span>UTF-8</span>-->
+                <b class="iconfont icon-select-empty gbk"></b><span>GBK</span>
+                <!--<b class="iconfont icon-select-empty ascii"></b><span>ASCII</span>-->
+                <b class="iconfont icon-select-empty native"></b><span>原始字符</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taTarget" maxlength="999999999" cols="999999999" rows="999999999" placeholder="转换后的编码或字符..."></textarea>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b><span>“\u”</span>Unicode编码；<span>“&#x...;”</span>GBK编码。</p>
+    </div>
+
+    <div class="zone-act">
+        <span id="spTrans" class="sp-btn">转换</span>
+        <span id="spClear" class="sp-btn">清空</span>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

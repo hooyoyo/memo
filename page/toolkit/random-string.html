@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>生成随机字符串</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/random-string.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/random-string.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>生成随机字符串</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option in-type">
+            <!--<div><b class="cell-bulletin">条件</b></div>-->
+            <div class="cell-option">
+                <li>
+                    <b id="unique" class="iconfont icon-select-empty"></b><span>不重复</span>
+                    <b id="upper" class="iconfont icon-select-empty active"></b><span>大字母</span>
+                    <b id="lower" class="iconfont icon-select-empty active"></b><span>小字母</span>
+                    <b id="number" class="iconfont icon-select-empty active"></b><span>数字</span>
+                    <b id="symbol" class="iconfont icon-select-empty"></b><span>特殊符号</span>
+                    <b id="custom" class="iconfont icon-select-empty"></b><span>自定义</span><input id="meta" type="text" maxlength="100" placeholder="字符串组成要素"/>
+                </li>
+                <li>
+                    <b class="iconfont icon-select-radio void"></b><span>长度</span><input id="length" type="text" maxlength="4" placeholder="8"/>
+                    <b class="iconfont icon-select-radio void"></b><span>数量</span><input id="count" type="text" maxlength="4" placeholder="1"/>
+                    <b id="clear" class="iconfont icon-select-empty active"></b><span>无歧义的</span>
+                </li>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taResult" name='address' maxlength="999999999" cols="999999999" rows="999999999" placeholder="生成结果..."></textarea>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>选择<span>“不重复”</span>时，最大<span>长度</span>取决于组成要素的数量；自定义<span>空白字符</span>无效；选择<span>“无歧义的”</span>将删除0oO1lI2zZ等易混淆字符且涵盖自定义要素。</p>
+    </div>
+
+    <div class="zone-act">
+        <span id="spGenerate" class="sp-btn">生成</span>
+        <span id="spClear" class="sp-btn">清空</span>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

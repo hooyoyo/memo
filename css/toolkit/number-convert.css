@@ -1,0 +1,228 @@
+html,
+body {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #393939;
+}
+
+body {
+    background: #f4f4f4;
+    color: #393939;
+    line-height: 22px;
+}
+
+ul {
+    -webkit-padding: 0;
+    -webkit-margin: 0;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+@media (min-width: 768px) {
+    html, body {
+        height: 100%;
+    }
+    .main-shell {
+        min-height: 100%;
+        max-width: 50%;
+        margin-left: 25%;
+        box-shadow: 0 0 5px #888888;
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+.main-header {
+}
+
+.nav-bar {
+    background-color: #44b78b;
+    color: #f0f0f0;
+    line-height: 22px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.nav-bar div {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.nav-bar .btn:hover {
+    background-color: #319978;
+    cursor: pointer;
+}
+
+.nav-bar p {
+    margin: 0;
+}
+
+.nav-bar i {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.nav-bar span {
+    font-size: 22px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.nav-bar .title {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-bar .home {
+}
+
+.main-body {
+}
+
+.zone-form {
+    background-color: #f4f4f4;
+}
+
+.zone-form input {
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    font-size: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.zone-form p {
+    margin: 0;
+}
+
+.zone-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px 15px;
+    font-size: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.zone-form input.radio {
+    height: 21px;
+    width: 21px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.zone-form input.text {
+    height: 50px;
+    width: 20%;
+    margin-top: 0;
+    vertical-align: top;
+    background-color: transparent;
+    border: none;
+}
+
+.field-title {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #666;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.field-title i {
+    color: #66cc99;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.field-title.result {
+    color: #319978;
+    font-weight: 600;
+}
+
+.select-option span {
+    padding: 2px 5px;
+    margin: 0 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.select-option span:hover, .select-option span.active {
+    background-color: #44b78b;
+    color: #f0f0f0;
+}
+
+.select-option span:active {
+    background-color: #319978;
+}
+
+.select-option i {
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.field-content ul {
+    padding: 0 15px;
+}
+
+.result-list li {
+    padding: 5px 0;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.result-list span {
+    margin-right: 15px;
+    font-size: 15px;
+}
+
+.result-list span.long {
+    margin-right: 24px;
+}
+
+.result-list .key {
+    width: 80px;
+    font-weight: 600;
+}
+
+.result-list .value {
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+.zone-empty {
+    padding: 25px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-footer {
+}
+
+.main-footer a {
+    color: #0028fd;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (max-width: 767px) {
+}
+
+font {
+}

@@ -1,0 +1,314 @@
+html,
+body {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #393939;
+}
+
+body {
+    background: #f4f4f4;
+    color: #393939;
+    line-height: 22px;
+}
+
+ul {
+    -webkit-padding: 0;
+    -webkit-margin: 0;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+@media (min-width: 768px) {
+    html, body {
+        height: 100%;
+    }
+    .main-shell {
+        min-height: 100%;
+        max-width: 50%;
+        margin-left: 25%;
+        box-shadow: 0 0 5px #888888;
+    }
+    .zone-form textarea {
+        height: 5910px;
+    }
+}
+
+@media (max-width: 767px) {
+    .zone-form textarea {
+        height: 7490px;
+    }
+}
+
+.main-header {
+}
+
+.nav-bar {
+    background-color: #44b78b;
+    color: #f0f0f0;
+    line-height: 22px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.nav-bar div {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.nav-bar .btn:hover {
+    background-color: #319978;
+    cursor: pointer;
+}
+
+.nav-bar p {
+    margin: 0;
+}
+
+.nav-bar i {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.nav-bar span {
+    font-size: 22px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.nav-bar .title {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-bar .home {
+}
+
+.main-body {
+}
+
+.zone-form {
+    background-color: #f4f4f4;
+}
+
+.zone-form input {
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    font-size: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.zone-form p {
+    margin: 0;
+}
+
+.zone-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.zone-form input.radio {
+    height: 21px;
+    width: 21px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.zone-form input.text {
+    height: 50px;
+    width: 20%;
+    margin-top: 0;
+    vertical-align: top;
+    background-color: transparent;
+    border: none;
+}
+
+.field-title {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #666;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.field-title i {
+    color: #66cc99;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.field-title.result {
+    color: #319978;
+    font-weight: 600;
+}
+
+.select-option span {
+    padding: 2px 5px;
+    margin: 0 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.select-option span:hover, .select-option span.active {
+    background-color: #44b78b;
+    color: #f0f0f0;
+}
+
+.select-option span:active {
+    background-color: #319978;
+}
+
+.select-option i {
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.cell-bulletin {
+    color:#393939;
+    margin-right: 10px;
+}
+
+.cell-option {
+}
+
+.cell-option b {
+    cursor: pointer;
+}
+
+.cell-option b:not(.hold):not(.active):hover::before {
+    content: "\ea2f";
+    color: #44b78b;
+}
+
+.cell-option b:not(.hold):not(.active):active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.hold:not(.active):active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.cell-option b.active:active::before {
+    content: "\ea2e";
+    color: #319978;
+}
+
+.cell-option .iconfont {
+    color: #44b78b;
+}
+
+.cell-option .iconfont.active::before {
+    content: "\ea2f";
+    color: #319978;
+}
+
+.field-content {
+}
+
+.zone-tip {
+}
+
+.zone-tip p {
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+}
+
+.zone-tip span {
+    font-weight: 600;
+    margin: 0 3px;
+}
+
+.zone-act {
+    margin-top: 20px;
+    padding: 0 15px;
+    display: flex;
+}
+
+.div-btn {
+    background-color: #44b78b;
+    color: #f0f0f0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 32px;
+    height: 32px;
+    width: 150px;
+    margin: 0;
+    margin-right: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#btnConfirm:hover {
+    background-color: #39aa86;
+}
+
+#btnConfirm:active {
+    background-color: #319978;
+}
+
+#btnCancel {
+    margin-right: 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    height: 30px;
+    width: 148px;
+    color: #aeaeae;
+    font-weight: normal;
+}
+
+#btnCancel:hover {
+    background-color: #ececec;
+    color: #969696;
+}
+
+#btnCancel:active {
+    background-color: #e8e8e8;
+}
+
+.zone-empty {
+    padding: 25px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-footer {
+}
+
+.main-footer a {
+    color: #0028fd;
+}
+
+@media (min-width: 768px) {
+    .select-option span {
+        padding: 0 5px 2px 5px;
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+font {
+}

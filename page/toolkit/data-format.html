@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>格式化数据</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/data-format.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../lib/Plugin/xml2json/xml2json.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/data-format.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>格式化数据</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option data-type">
+            <div><b class="cell-bulletin">格式</b></div>
+            <div class="cell-option">
+                <span class="xml">XML</span>
+                <span class="json active">JSON</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taData" maxlength="999999999" cols="999999999" rows="999999999" placeholder="待处理数据..."></textarea>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b><span>JSON</span>转<span>XML</span>可能缺少<span>根节点</span>标签。</p>
+    </div>
+
+    <div class="zone-act">
+        <div id="btnFormat" class="div-btn">格式化</div>
+        <div id="btnConvert" class="div-btn xml">转XML</div>
+        <div id="btnClear" class="div-btn">清空</div>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

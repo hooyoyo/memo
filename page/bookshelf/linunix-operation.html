@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Linux/Unix常用操作</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/linunix-operation.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/linunix-operation.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>Linux/Unix常用操作</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+            <textarea maxlength="99999" placeholder="..." readonly>
+============ LINUX ============
+
+1. 查看内核信息
+# uname -a
+
+2. 查看发行版本信息
+# lsb_release -a
+# cat /proc/version
+# cat /etc/issue | grep Linux
+
+3. 查看CPU物理个数
+# cat /proc/cpuinfo|grep "physical id"|sort|uniq|wc -l
+
+4. 查看CPU逻辑个数
+# cat /proc/cpuinfo|grep "processor"|wc -l
+
+5. 查看CPU单个核心数
+# cat /proc/cpuinfo|grep "cores"|uniq
+
+6. 查看CPU主频
+# cat /proc/cpuinfo|grep MHz|uniq
+
+7. 查看CPU逻辑个数及型号
+# cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+
+8. 查看CPU个数及核心数分布情况
+# cat /proc/cpuinfo | grep physical | uniq -c
+
+9. 查看当前CPU运行什么模式(32/64位)
+# getconf LONG_BIT
+
+10. 查看当前CPU是否支持64位运算
+# cat /proc/cpuinfo | grep flags | grep ' lm ' | wc -l
+
+11. 查看是否超线程
+如2个逻辑CPU具有相同"core id"表示启用超线程
+
+12. 查看内存
+# cat /proc/meminfo
+# free -m
+
+13. 查看CPU和内存资源动态使用情况
+# top
+
+14. 查看环境变量
+# env
+# echo $PATH
+
+15. 查看文件访问情况
+# lsof
+
+16. 查看磁盘I/O情况
+# iostat -xdm
+
+17. 查看网络
+# netstat -an
+
+18. 查看进程
+# ps -ef
+# ps -aux
+
+19. 改密码
+# passwd
+# passwd username
+
+20. 开关机
+# halt
+# shutdown -h now
+# reboot
+# shutdown -r now
+
+
+============ BSD ============
+
+
+
+            </textarea>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>切换大小写</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/toolkit/upper-lower.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/toolkit/upper-lower.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../toolkit.html"><div class="icon btn menu"><i class="iconfont icon-list"></i></div></a>
+        <div class="title"><span>切换大小写</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-title select-option text-type">
+            <div><b class="cell-bulletin">类型</b></div>
+            <div class="cell-option">
+                <span class="char active">字母</span>
+                <span class="sql">SQL</span>
+                <span class="num">数额</span>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taSource" maxlength="1000" placeholder="待切换的文本内容..."></textarea>
+        </div>
+
+        <div class="field-title select-option shift-type">
+            <div><b class="cell-bulletin">结果</b></div>
+            <div class="cell-option">
+                <b class="upper iconfont icon-unselect-radio active"></b><span class="static">大写</span>
+                <b class="lower iconfont icon-unselect-radio"></b><span class="static">小写</span>
+            </div>
+            <div class="btn-select-list sql-type" style="display: none">
+                <div class="btn-select"><input id="sqlType" class="sub-option" type="text" maxlength="1" placeholder="版本" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                <ul class="ext-widget-list" style="display: none">
+                    <li class="sqlall">ALL</li>
+                    <li class="sql1992">SQL-92</li>
+                    <li class="sql1999">SQL-99</li>
+                    <li class="sql2003">SQL-03</li>
+                    <li class="sql2008">SQL-08</li>
+                    <li class="sql2011">SQL-11</li>
+                </ul>
+            </div>
+            <div class="btn-select-list num-type" style="display: none">
+                <div class="btn-select"><input id="numType" class="sub-option" type="text" maxlength="1" placeholder="字体" readonly/><i class="ext-widget-button toggle-arrow down-arrow"></i></div>
+                <ul class="ext-widget-list" style="display: none">
+                    <li class="complex">繁体</li>
+                    <li class="simple">简体</li>
+                    <li class="money">人民币</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="field-content">
+            <textarea id="taResult" maxlength="999999999" cols="999999999" rows="999999999" placeholder="切换后的..."></textarea>
+        </div>
+    </div>
+
+    <div class="zone-tip">
+        <p><b>注：</b>只对<span>标准</span>SQL语句的关键字进行处理。</p>
+    </div>
+
+    <div class="zone-act">
+        <div id="btnShift" class="div-btn">切换</div>
+        <div id="btnClear" class="div-btn">清空</div>
+    </div>
+
+    <div class="zone-empty">
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>

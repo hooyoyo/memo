@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>正则表达式符号释义表</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="../../img/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="../../lib/IconFont/AliIconFont/kitbox/iconfont.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/bookshelf/regular-expression.css">
+    <script src="../../lib/Framework/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/bookshelf/regular-expression.js"></script>
+</head>
+<body style="display: none">
+<div class="main-shell">
+<header class="main-header">
+    <div class="nav-bar">
+        <a href="../bookshelf.html"><div class="icon btn menu"><i class="iconfont icon-books"></i></div></a>
+        <div class="title"><span>正则表达式符号释义表</span></div>
+        <a href="../../index.html"><div class="icon btn home"><i class="iconfont icon-home"></i></div></a>
+    </div>
+</header>
+<!-- 主功能区 -->
+<div class="main-body">
+    <!-- 工具区 -->
+    <div class="zone-form">
+        <div class="field-content">
+<p>
+    <strong>1.非打印字符</strong><br/>
+</p>
+<table border="1" align="center" style="padding: 0px; margin: 0; border-spacing: 0px; border-width: 1px; border-style: solid; border-color: #ccc; font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;">
+    <tbody style="padding: 0px; margin: 0px;">
+        <tr style="padding: 0px; margin: 0px;">
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                字符
+            </th>
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                含义
+            </th>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td width="40" style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \cx
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的‘c’字符。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \f
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配一个换页符。等价于 \x0c 和 \cL。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \n
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配一个换行符。等价于 \x0a 和 \cJ。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \r
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配一个回车符。等价于 \x0d 和 \cM。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \s
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \S
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \t
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配一个制表符。等价于 \x09 和 \cI。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \v
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配一个垂直制表符。等价于 \x0b 和 \cK。
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <strong>2.特殊字符</strong>
+</p>
+<p></p>
+<table border="1" align="center" style="padding: 0px; margin: 0; border-spacing: 0px; border-width: 1px; border-style: solid; border-color: #ccc; font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;">
+    <tbody style="padding: 0px; margin: 0px;">
+        <tr style="padding: 0px; margin: 0px;">
+            <th width="40" align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                字符
+            </th>
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                含义
+            </th>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                $
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配‘\n’或‘\r’。要匹配 $ 字符本身，请使用 \$。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                ( )
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 \( 和 \)。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                *
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                +
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                .
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配除换行符 \n之外的任何单字符。要匹配 .，请使用 \。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                [
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                标记一个中括号表达式的开始。要匹配 [，请使用 \[。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                ?
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如，‘n’匹配字符‘n’。’\n’匹配换行符。序列‘\\’匹配“\”，而‘\(’则匹配“(”。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                ^
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                {
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                标记限定符表达式的开始。要匹配 {，请使用 \{。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                |
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                指明两项之间的一个选择。要匹配 |，请使用 \|。
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family:Open Sans, Helvetica, Arial, sans-serif"><strong>3.限定字符</strong></span>
+</p>
+<p></p>
+<p>
+    <span style="font-family:Open Sans, Helvetica, Arial, sans-serif"></span>
+</p>
+<table border="1" align="center" style="padding: 0px; margin: 0; border-spacing: 0px; border-width: 1px; border-style: solid; border-color: #ccc; font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;">
+    <tbody style="padding: 0px; margin: 0px;">
+        <tr style="padding: 0px; margin: 0px;">
+            <th width="60" align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                限定符
+            </th>
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                含义
+            </th>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                *
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配前面的子表达式零次或多次。例如，zo* 能匹配“z”以及“zoo”。* 等价于{0,}。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                +
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配前面的子表达式一次或多次。例如，’zo+’能匹配“zo”以及“zoo”，但不能匹配“z”。+ 等价于 {1,}。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                ?
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                匹配前面的子表达式零次或一次。例如，“do(es)?”可以匹配“do”或“does”中的“do”。? 等价于 {0,1}。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                {n}
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                n 是一个非负整数。匹配确定的 n 次。例如，‘o{2}’不能匹配“Bob”中的‘o’，但是能匹配“food”中的两个 o。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                {n,}
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                n 是一个非负整数。至少匹配n 次。例如，‘o{2,}’不能匹配“Bob”中的‘o’，但能匹配“foooood”中的所有 o。‘o{1,}’等价于‘o+’。‘o{0,}’则等价于‘o*’。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                {n,m}
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}”将匹配“fooooood”中的前三个 o。‘o{0,1}’等价于‘o?’。请注意在逗号和两个数之间不能有空格。
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <strong>4.常用转义</strong><br/>
+</p>
+<table border="1" align="center" style="margin: 0; white-space: normal; padding: 0px; border-spacing: 0px; border-width: 1px; border-style: solid; border-color: #ccc; font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;">
+    <tbody style="padding: 0px; margin: 0px;">
+        <tr style="padding: 0px; margin: 0px;">
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                转义组
+            </th>
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                描述
+            </th>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td width="120" style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                \b
+            </td>
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                <span style="color: rgb(34, 34, 34); font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif; font-size: 14px; white-space: normal;">匹配单词的开始或结束。</span>
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                \d
+            </td>
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                <span style="font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif; white-space: normal;">匹配数字</span>。
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                \w
+            </td>
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                <span style="color: rgb(34, 34, 34); font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif; font-size: 14px; white-space: normal;">匹配字母或数字或下划线或汉字，能否匹配汉字要视操作系统应用环境而定。</span>
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                <span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; white-space: normal;">[\u4e00-\u9fa5]</span>
+            </td>
+            <td style="padding: 3px; border-color: #ccc; margin: 0px; border-collapse: collapse;">
+                匹配中文汉字。
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <strong>5.操作优先级</strong><br/><strong></strong>
+</p>
+<table border="1" align="center" style="padding: 0px; margin: 0; border-spacing: 0px; border-width: 1px; border-style: solid; border-color: #ccc; font-family: 'Microsoft YaHei', 'Source Sans Pro', Arial, sans-serif;">
+    <tbody style="padding: 0px; margin: 0px;">
+        <tr style="padding: 0px; margin: 0px;">
+            <th width="200" align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                操作符
+            </th>
+            <th align="left" style="padding: 3px; margin: 0px; border-width: 1px; border-style: solid; border-color: #ccc; border-collapse: collapse;">
+                类型
+            </th>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                \
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                转义符
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                (), (?:), (?=), []
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                圆括号和方括号框定范围
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                *, +, ?, {n}, {n,}, {n,m}
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                限定符
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                ^, $, \anymetacharacter
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                位置和顺序
+            </td>
+        </tr>
+        <tr style="padding: 0px; margin: 0px;">
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+                |
+            </td>
+            <td style="padding: 3px; margin: 0px; border-color: #ccc; border-collapse: collapse;">
+               可选“或”操作
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    注：自上而下、从左到右对应由高至低的优先级顺序
+</p>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="">
+        为人民服务
+    </div>
+    <div class="">
+        版权所有 © 2018-∞ <strong><a href="/">X</a></strong> 保留所有权利
+    </div>
+</footer>
+</div>
+<style type="text/css"></style>
+<script></script>
+</body>
+</html>
