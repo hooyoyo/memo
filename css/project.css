@@ -142,6 +142,22 @@ li {
     -o-transition: all .3s linear;
 }
 
+.proj-item.gitee {
+    background-color: #fdc351;
+}
+
+.proj-item.gitee:hover {
+    background-color: #faad39;
+}
+
+.proj-item.gitee:active {
+    background-color: #f8a032;
+}
+
+.proj-icon.gitee {
+    color: #e88f31;
+}
+
 .proj-item:hover .proj-icon {
     font-size: 36px;
 }
@@ -151,6 +167,10 @@ li {
     font-size: 14px;
     text-align: left;
     color: #f0f0f0;
+}
+
+.proj-item.gitee p {
+    color: #fefafa;
 }
 
 p.item-head {
