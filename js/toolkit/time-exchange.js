@@ -72,44 +72,51 @@ $(function() {
         var formatIn = selOpt[$('#timeFormatIn').val()];
         var formatOut = selOpt[$('#timeFormatOut').val()];
         var taSrcVal = taSource.val();
-        var taRstVal;
+        var taRstVal = '';
 
-        if (selOptInType == 'second') {
-            taSrcVal = parseInt(taSrcVal);
-        } else if (selOptInType == 'time') {
-            if (formatIn == 'yyyy-MM-dd HH:mm:ss' || 'yyyy-MM-dd HH:mm:ss.SSS' || 'yyyy/MM/dd HH:mm:ss' || 'yyyy/MM/dd HH:mm:ss.SSS') {
-                taSrcVal = new Date(taSrcVal).getTime();
-            } else if (formatIn == 'yyyyMMddHHmmssSSS') {
-                var stryyyy = taSrcVal.slice(0,4);
-                var strMM = taSrcVal.slice(4,6);
-                var strdd = taSrcVal.slice(6,8);
-                var strHH = taSrcVal.slice(8,10);
-                var strmm = taSrcVal.slice(10,12);
-                var strss = taSrcVal.slice(12,14);
-                var strSSS = taSrcVal.slice(14,17);
-                var standardFormart = stryyyy + '-' + strMM + '-' + strdd + ' ' + strHH + ':' + strmm + ':' + strss + '.' + strSSS;
-                taSrcVal = new Date(standardFormart).getTime();
-            } else if (formatIn == 'yyyy年MM月dd日 HH时mm分ss秒') {
-                var stryyyy = taSrcVal.slice(0,4);
-                var strMM = taSrcVal.slice(5,7);
-                var strdd = taSrcVal.slice(8,10);
-                var strHH = taSrcVal.slice(12,14);
-                var strmm = taSrcVal.slice(15,17);
-                var strss = taSrcVal.slice(18,20);
-                var standardFormart = stryyyy + '-' + strMM + '-' + strdd + ' ' + strHH + ':' + strmm + ':' + strss;
-                taSrcVal = new Date(standardFormart).getTime();
-            } else {
-                taSrcVal = new Date(taSrcVal).getTime();
+        var inpStrs = taSrcVal.split('\n');
+        inpStrs.forEach(function (inpStr, i) {
+            var exchStr;
+            inpStr = inpStr.trim();
+
+            if (selOptInType == 'second') {
+                exchStr = parseInt(inpStr);
+            } else if (selOptInType == 'time') {
+                if (formatIn == 'yyyy-MM-dd HH:mm:ss' || formatIn == 'yyyy-MM-dd HH:mm:ss.SSS' || formatIn == 'yyyy/MM/dd HH:mm:ss' || formatIn == 'yyyy/MM/dd HH:mm:ss.SSS') {
+                    exchStr = new Date(inpStr).getTime();
+                } else if (formatIn == 'yyyyMMddHHmmssSSS') {
+                    var stryyyy = inpStr.slice(0, 4);
+                    var strMM = inpStr.slice(4, 6);
+                    var strdd = inpStr.slice(6, 8);
+                    var strHH = inpStr.slice(8, 10);
+                    var strmm = inpStr.slice(10, 12);
+                    var strss = inpStr.slice(12, 14);
+                    var strSSS = inpStr.slice(14, 17);
+                    var standardFormart = stryyyy + '-' + strMM + '-' + strdd + ' ' + strHH + ':' + strmm + ':' + strss + '.' + strSSS;
+                    exchStr = new Date(standardFormart).getTime();
+                } else if (formatIn == 'yyyy年MM月dd日 HH时mm分ss秒') {
+                    var stryyyy = inpStr.slice(0, 4);
+                    var strMM = inpStr.slice(5, 7);
+                    var strdd = inpStr.slice(8, 10);
+                    var strHH = inpStr.slice(12, 14);
+                    var strmm = inpStr.slice(15, 17);
+                    var strss = inpStr.slice(18, 20);
+                    var standardFormart = stryyyy + '-' + strMM + '-' + strdd + ' ' + strHH + ':' + strmm + ':' + strss;
+                    exchStr = new Date(standardFormart).getTime();
+                } else {
+                    exchStr = new Date(inpStr).getTime();
+                }
             }
-        }
 
-        if (selOptOutType == 'second') {
-            taRstVal = taSrcVal;
-        } else if (selOptOutType == 'time') {
-            if (_isEmpty_(formatOut)) formatOut = 'yyyy-MM-dd HH:mm:ss';
-            taRstVal = new Date(taSrcVal).pattern(formatOut);
-        }
+            if (selOptOutType == 'second') {
+                taRstVal += exchStr + '\n';
+            } else if (selOptOutType == 'time') {
+                if (_isEmpty_(formatOut)) formatOut = 'yyyy-MM-dd HH:mm:ss';
+                taRstVal += new Date(exchStr).pattern(formatOut) + '\n';
+            }
+        });
 
+        taRstVal = taRstVal.slice(0, -1);
         taResult.val(taRstVal);
     });
 });
